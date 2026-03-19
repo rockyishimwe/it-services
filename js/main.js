@@ -1,6 +1,3 @@
-/* ============================================================
-   IT SERVICES CO — Main JS v3
-   ============================================================ */
 
 document.addEventListener('DOMContentLoaded', () => {
   initTheme();
