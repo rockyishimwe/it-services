@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Meet the expert team at IT Services Co. — Talented engineers, designers, and consultants ready to transform your business."/>
+  <meta property="og:title" content="Meet Our Team — IT Services Co."/>
+  <meta property="og:type" content="website"/>
+  <title>Meet Our Team — IT Services Co.</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"/>
+  <link rel="stylesheet" href="../css/style.css"/>
+  <style>
+    /* Team specific styles */
+    .team-hero {
+      padding: 8rem 0 4rem;
+      text-align: center;
+      position: relative;
+    }
+    
+    .team-hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg, var(--black) 0%, var(--black3) 100%);
+      z-index: -1;
+    }
+    
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 3rem;
+      margin-top: 4rem;
+    }
+    
+    .team-member {
+      text-align: center;
+      position: relative;
+      transition: transform var(--t-base);
+    }
+    
+    .team-member:hover {
+      transform: translateY(-10px);
+    }
+    
+    .member-image-container {
+      position: relative;
+      width: 250px;
+      height: 250px;
+      margin: 0 auto 1.5rem;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 3px solid var(--white2);
+      transition: border-color var(--t-base);
+    }
+    
+    .team-member:hover .member-image-container {
+      border-color: var(--emerald);
+    }
+    
+    .member-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: filter var(--t-base), transform var(--t-base);
+      filter: grayscale(100%) contrast(1.2);
+    }
+    
+    .member-image-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      transition: opacity var(--t-base);
+      filter: saturate(1.1) contrast(1.05);
+    }
+    
+    .team-member:hover .member-image {
+      filter: grayscale(0%) contrast(1.1);
+      transform: scale(1.05);
+    }
+    
+    .team-member:hover .member-image-overlay {
+      opacity: 1;
+    }
+    
+    .member-info h3 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--white);
+    }
+    
+    .member-role {
+      color: var(--emerald);
+      font-weight: 500;
+      margin-bottom: 1rem;
+      display: block;
+    }
+    
+    .member-bio {
+      color: var(--white4);
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+    }
+    
+    .member-social {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+    }
+    
+    .social-link {
+      width: 40px;
+      height: 40px;
+      border: 1px solid var(--white2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--white4);
+      text-decoration: none;
+      transition: all var(--t-base);
+    }
+    
+    .social-link:hover {
+      background: var(--emerald);
+      border-color: var(--emerald);
+      color: var(--black);
+    }
+    
+    .page-owner {
+      text-align: center;
+      padding: 2rem;
+      margin-top: 4rem;
+      border-top: 1px solid var(--white2);
+      color: var(--white4);
+    }
+    
+    .page-owner strong {
+      color: var(--emerald);
+    }
+    
+    @media (max-width: 768px) {
+      .team-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+      
+      .member-image-container {
+        width: 200px;
+        height: 200px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar" id="navbar" role="navigation" aria-label="Main navigation">
+  <div class="navbar-inner">
+    <a href="../index.html" class="nav-brand" aria-label="IT Services Home">
+      <div class="nav-logo" aria-hidden="true">
+        <svg width="18" height="18" viewBox="0 0 20 20" fill="none">
+          <rect x="1" y="5" width="6" height="10" rx="1.5" fill="white" opacity="0.95"/>
+          <rect x="11" y="5" width="4" height="3" rx="1" fill="white" opacity="0.8"/>
+          <rect x="11" y="12" width="4" height="3" rx="1" fill="white" opacity="0.8"/>
+          <rect x="17" y="8" width="2" height="1" rx="0.5" fill="white" opacity="0.5"/>
+          <rect x="17" y="11" width="2" height="1" rx="0.5" fill="white" opacity="0.5"/>
+        </svg>
+      </div>
+      IT<span class="brand-accent">Services</span>
+    </a>
+    <ul class="nav-links" role="list">
+      <li><a href="../index.html" class="nav-link">Home</a></li>
+      <li><a href="services.html" class="nav-link">Services</a></li>
+      <li><a href="about.html" class="nav-link">About</a></li>
+      <li><a href="team.html" class="nav-link active">Team</a></li>
+      <li><a href="contact.html" class="nav-link">Contact</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme"><i class="bi bi-sun"></i></button>
+      <a href="contact.html" class="btn btn-ghost btn-sm">Login</a>
+      <a href="quote.html" class="btn btn-primary btn-sm">Get a Quote <span class="arrow"><i class="bi bi-arrow-right"></i></span></a>
+    </div>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle mobile menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="nav-mobile" id="navMobile" role="dialog" aria-label="Mobile navigation">
+  <a href="../index.html" class="nav-link">Home</a>
+  <a href="services.html" class="nav-link">Services</a>
+  <a href="about.html" class="nav-link">About</a>
+  <a href="team.html" class="nav-link active">Team</a>
+  <a href="contact.html" class="nav-link">Contact</a>
+  <a href="quote.html" class="btn btn-primary" style="margin-top:1rem">Get a Quote</a>
+</div>
+
+<!-- TEAM HERO -->
+<section class="team-hero" aria-label="Team introduction">
+  <div class="container">
+    <div class="reveal">
+      <span class="label">MEET THE TEAM</span>
+      <h1 class="heading-1" style="margin-bottom:1.5rem">The Experts Behind Your Success</h1>
+      <p class="body-lg text-muted" style="max-width:600px;margin:0 auto">Our diverse team of engineers, designers, and consultants brings decades of combined experience to deliver exceptional results for your business.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM GRID -->
+<section class="section" aria-label="Team members">
+  <div class="container">
+    <div class="team-grid">
+      
+      <!-- Team Member 1 -->
+      <div class="team-member reveal">
+        <div class="member-image-container">
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=250&h=250&fit=crop&q=80&grayscale" alt="Slack - Team Lead" class="member-image"/>
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=250&h=250&fit=crop&q=80" alt="Slack - Team Lead" class="member-image-overlay"/>
+        </div>
+        <div class="member-info">
+          <h3>Slack</h3>
+          <span class="member-role">Team Lead & Page Owner</span>
+          <p class="member-bio">Leading our team with 10+ years of experience in enterprise architecture and digital transformation. Passionate about delivering innovative solutions that drive business growth.</p>
+          <div class="member-social">
+            <a href="#" class="social-link" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+            <a href="#" class="social-link" aria-label="Twitter"><i class="bi bi-twitter-x"></i></a>
+            <a href="#" class="social-link" aria-label="GitHub"><i class="bi bi-github"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Team Member 2 -->
+      <div class="team-member reveal reveal-delay-1">
+        <div class="member-image-container">
+          <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=250&h=250&fit=crop&q=80&grayscale" alt="Sarah Chen - Senior Developer" class="member-image"/>
+          <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=250&h=250&fit=crop&q=80" alt="Sarah Chen - Senior Developer" class="member-image-overlay"/>
+        </div>
+        <div class="member-info">
+          <h3>Sarah Chen</h3>
+          <span class="member-role">Senior Full Stack Developer</span>
+          <p class="member-bio">Expert in React, Node.js, and cloud architecture. Building scalable web applications that handle millions of users with exceptional performance.</p>
+          <div class="member-social">
+            <a href="#" class="social-link" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+            <a href="#" class="social-link" aria-label="GitHub"><i class="bi bi-github"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Team Member 3 -->
+      <div class="team-member reveal reveal-delay-2">
+        <div class="member-image-container">
+          <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=250&h=250&fit=crop&q=80&grayscale" alt="Marcus Johnson - DevOps Engineer" class="member-image"/>
+          <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=250&h=250&fit=crop&q=80" alt="Marcus Johnson - DevOps Engineer" class="member-image-overlay"/>
+        </div>
+        <div class="member-info">
+          <h3>Marcus Johnson</h3>
+          <span class="member-role">DevOps & Cloud Architect</span>
+          <p class="member-bio">AWS certified specialist in infrastructure automation, CI/CD pipelines, and Kubernetes. Ensuring 99.99% uptime for mission-critical applications.</p>
+          <div class="member-social">
+            <a href="#" class="social-link" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+            <a href="#" class="social-link" aria-label="Twitter"><i class="bi bi-twitter-x"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Team Member 4 -->
+      <div class="team-member reveal">
+        <div class="member-image-container">
+          <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=250&h=250&fit=crop&q=80&grayscale" alt="Emily Rodriguez - UX Designer" class="member-image"/>
+          <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=250&h=250&fit=crop&q=80" alt="Emily Rodriguez - UX Designer" class="member-image-overlay"/>
+        </div>
+        <div class="member-info">
+          <h3>Emily Rodriguez</h3>
+          <span class="member-role">UX/UI Design Lead</span>
+          <p class="member-bio">Creating intuitive, beautiful interfaces that users love. Specializing in user research, design systems, and accessibility standards.</p>
+          <div class="member-social">
+            <a href="#" class="social-link" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+            <a href="#" class="social-link" aria-label="Dribbble"><i class="bi bi-dribbble"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Team Member 5 -->
+      <div class="team-member reveal reveal-delay-1">
+        <div class="member-image-container">
+          <img src="https://images.unsplash.com/photo-1557862921-37829c790f19?w=250&h=250&fit=crop&q=80&grayscale" alt="David Kim - Security Expert" class="member-image"/>
+          <img src="https://images.unsplash.com/photo-1557862921-37829c790f19?w=250&h=250&fit=crop&q=80" alt="David Kim - Security Expert" class="member-image-overlay"/>
+        </div>
+        <div class="member-info">
+          <h3>David Kim</h3>
+          <span class="member-role">Cybersecurity Specialist</span>
+          <p class="member-bio">Certified ethical hacker and security architect. Protecting businesses from advanced threats with cutting-edge security solutions.</p>
+          <div class="member-social">
+            <a href="#" class="social-link" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+            <a href="#" class="social-link" aria-label="Twitter"><i class="bi bi-twitter-x"></i></a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PAGE OWNER -->
+<div class="page-owner">
+  <div class="container">
+    <p>Page Owner: <strong>Slack</strong> | Team Lead & Operations Manager</p>
+    <p style="font-size: 0.9rem; margin-top: 0.5rem;">Last updated: March 2024 | For team inquiries, contact <a href="mailto:slack@itservices.com" style="color: var(--emerald);">slack@itservices.com</a></p>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer" aria-label="Footer">
+  <div class="container">
+    <div class="footer-newsletter">
+      <div class="footer-nl-inner">
+        <div>
+          <h3 class="nl-title">Stay ahead of the curve.</h3>
+          <p class="nl-desc">Tech insights and case studies, twice a month. No spam.</p>
+        </div>
+        <form class="nl-form" onsubmit="handleNewsletter(event)">
+          <input type="email" class="nl-input" placeholder="your@company.com" required aria-label="Newsletter email"/>
+          <button type="submit" class="btn btn-primary btn-sm">Subscribe</button>
+        </form>
+      </div>
+    </div>
+    <div class="footer-main">
+      <div>
+        <div class="footer-brand-wrap">
+          <div class="nav-logo" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="1" y="5" width="6" height="10" rx="1" fill="white" opacity="0.9"/><rect x="11" y="5" width="4" height="3" rx="1" fill="white" opacity="0.7"/><rect x="11" y="12" width="4" height="3" rx="1" fill="white" opacity="0.7"/></svg></div>
+          <span class="footer-brand-name">IT<span class="brand-accent">Services</span></span>
+        </div>
+        <p class="footer-tagline">Engineering the technology foundation for tomorrow's leading companies. Trusted by 200+ businesses worldwide.</p>
+        <div class="footer-social">
+          <a href="#" class="social-icon" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+          <a href="#" class="social-icon" aria-label="GitHub"><i class="bi bi-github"></i></a>
+          <a href="#" class="social-icon" aria-label="Twitter"><i class="bi bi-twitter-x"></i></a>
+          <a href="#" class="social-icon" aria-label="YouTube"><i class="bi bi-youtube"></i></a>
+        </div>
+        <div class="footer-certs">
+          <span class="cert-badge"><i class="bi bi-award"></i> AWS Partner</span>
+          <span class="cert-badge"><i class="bi bi-shield-check"></i> ISO 27001</span>
+          <span class="cert-badge"><i class="bi bi-lock"></i> SOC 2</span>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h5>Services</h5>
+        <ul class="footer-links">
+          <li><a href="services.html">Web Development</a></li>
+          <li><a href="services.html">Cloud &amp; DevOps</a></li>
+          <li><a href="services.html">Cybersecurity</a></li>
+          <li><a href="services.html">AI &amp; Automation</a></li>
+          <li><a href="services.html">Mobile Apps</a></li>
+          <li><a href="services.html">Managed Support</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Company</h5>
+        <ul class="footer-links">
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="team.html">Our Team</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="quote.html">Get a Quote</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Get In Touch</h5>
+        <ul class="footer-contact-list">
+          <li class="footer-contact-item"><i class="bi bi-geo-alt"></i><span>123 Tech Blvd, San Francisco, CA 94105</span></li>
+          <li class="footer-contact-item"><i class="bi bi-telephone"></i><a href="tel:+14155550100">+1 (415) 555-0100</a></li>
+          <li class="footer-contact-item"><i class="bi bi-envelope"></i><a href="mailto:hello@itservices.com">hello@itservices.com</a></li>
+          <li class="footer-contact-item"><i class="bi bi-clock"></i><span>Mon–Fri, 9AM–6PM PST</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="footer-bottom">
+      <p class="footer-copy">© <span class="footer-year">2024</span> IT Services Co. All rights reserved.</p>
+      <nav class="footer-legal">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="#">Cookies</a>
+      </nav>
+    </div>
+  </div>
+</footer>
+
+<script src="../js/main.js"></script>
+</body>
+</html>
