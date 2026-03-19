@@ -3,10 +3,181 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <meta name="description" content="About IT Services Co. — Our story, mission, values, team, and timeline."/>
   <title>About — IT Services Co.</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="../css/style.css"/>
+  <style>
+    /* ── Font size improvements across page ── */
+    .nav-link          { font-size: 0.84rem !important; }
+    .label             { font-size: 0.72rem !important; letter-spacing: 0.18em !important; }
+    .body-md, .body-lg { font-size: 1rem !important; line-height: 1.8 !important; }
+    .stat-label        { font-size: 0.76rem !important; }
+    .footer-links a    { font-size: 0.86rem !important; }
+    .footer-contact-item { font-size: 0.86rem !important; }
+    .btn               { font-size: 0.82rem !important; }
+    .btn-xl            { font-size: 0.96rem !important; }
+    .value-card h3     { font-size: 1.05rem !important; }
+    .value-card p      { font-size: 0.88rem !important; line-height: 1.72 !important; }
+    .timeline-item h4  { font-size: 1rem !important; }
+    .timeline-item p   { font-size: 0.86rem !important; }
+    .mv-card h3        { font-size: 1.25rem !important; }
+    .mv-card p         { font-size: 0.9rem !important; }
+    .page-hero-title   { font-size: clamp(2.8rem, 6.5vw, 5.2rem) !important; }
+    .page-hero-desc    { font-size: 1.05rem !important; color: #888 !important; }
+    .heading-1         { font-size: clamp(2rem, 3.8vw, 3rem) !important; }
+    .value-icon        { width: 56px !important; height: 56px !important; font-size: 1.5rem !important; }
+    .about-highlight span { font-size: 0.88rem !important; }
+    .nl-title          { font-size: 1.05rem !important; }
+    .nl-desc           { font-size: 0.84rem !important; }
+
+    /* ══════════════════════════════════
+       LOGO ICON in navbar
+    ══════════════════════════════════ */
+    .nav-logo-icon {
+      width: 32px; height: 32px;
+      background: #fff;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      transition: background 0.2s;
+    }
+    .nav-brand:hover .nav-logo-icon { background: #e8e8e8; }
+    .nav-logo-icon svg { display: block; }
+
+    /* ══════════════════════════════════
+       TEAM GRID
+    ══════════════════════════════════ */
+    #team { padding-top: 0 !important; }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: #181818;
+      border: 1px solid #181818;
+    }
+
+    .team-card {
+      background: #000;
+      overflow: hidden;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      transition: background 0.2s linear;
+    }
+    .team-card:hover { background: #0c0c0c; }
+
+    /* Photo box */
+    .team-card-img {
+      width: 100%;
+      height: 295px;
+      position: relative;
+      overflow: hidden;
+      display: block;
+      background: #0d0d0d;
+    }
+    .team-card-img img {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: top center;
+      /* ALL images start grayscale */
+      filter: grayscale(100%) brightness(0.7) contrast(1.1);
+      transition: filter 0.5s ease, transform 0.65s ease;
+      display: block;
+    }
+    /* HOVER → real colour for EVERY card */
+    .team-card:hover .team-card-img img {
+      filter: grayscale(0%) brightness(0.92) contrast(1.0);
+      transform: scale(1.05);
+    }
+
+    /* Founder badge */
+    .founder-badge {
+      position: absolute; top: 14px; left: 14px; z-index: 6;
+      background: #fff; color: #000;
+      font-size: 0.6rem; font-weight: 800;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      padding: 5px 12px; font-family: 'JetBrains Mono', monospace;
+      animation: badgePulse 3s ease-in-out infinite;
+    }
+    @keyframes badgePulse {
+      0%,100% { box-shadow: 0 0 0 0 rgba(255,255,255,0.3); }
+      50%      { box-shadow: 0 0 0 5px rgba(255,255,255,0); }
+    }
+
+    /* Social overlay */
+    .team-overlay {
+      position: absolute; inset: 0; z-index: 5;
+      display: flex; align-items: flex-end;
+      padding: 1.1rem;
+      background: linear-gradient(to top, rgba(0,0,0,0.82) 0%, transparent 55%);
+      opacity: 0; transition: opacity 0.35s ease;
+      pointer-events: none;
+    }
+    .team-card:hover .team-overlay { opacity: 1; pointer-events: auto; }
+    .team-socials { display: flex; gap: 0.4rem; }
+    .team-social-btn {
+      width: 36px; height: 36px;
+      border: 1px solid rgba(255,255,255,0.5);
+      background: rgba(0,0,0,0.55); color: #fff;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.95rem; text-decoration: none;
+      transition: background 0.15s, color 0.15s, transform 0.15s;
+    }
+    .team-social-btn:hover { background: #fff; color: #000; border-color: #fff; transform: translateY(-3px); }
+
+    /* Card body */
+    .team-card-body {
+      padding: 1.4rem 1.3rem 1.6rem;
+      flex: 1; display: flex; flex-direction: column;
+      border-top: 1px solid #181818;
+      position: relative;
+    }
+    .team-card-body::before {
+      content: '';
+      position: absolute; top: 0; left: 0; bottom: 0;
+      width: 2px; background: #fff;
+      transform: scaleY(0); transform-origin: top;
+      transition: transform 0.38s ease;
+    }
+    .team-card:hover .team-card-body::before { transform: scaleY(1); }
+
+    .team-name {
+      display: block; font-size: 1.1rem !important;
+      font-weight: 800; letter-spacing: -0.025em; color: #fff;
+      margin-bottom: 0.26rem;
+    }
+    .team-role {
+      display: block; font-size: 0.72rem !important;
+      font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase;
+      color: #555; margin-bottom: 0.9rem;
+      transition: color 0.2s;
+    }
+    .team-card:hover .team-role { color: #888; }
+    .team-bio {
+      font-size: 0.84rem !important; color: #4a4a4a;
+      line-height: 1.75 !important; transition: color 0.2s;
+    }
+    .team-card:hover .team-bio { color: #888; }
+
+    /* Portfolio link button */
+    .portfolio-link {
+      display: inline-flex; align-items: center; gap: 5px;
+      font-size: 0.65rem !important; font-weight: 700;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: #fff; border: 1px solid #2a2a2a;
+      padding: 5px 10px; margin-top: 0.85rem;
+      background: transparent; text-decoration: none;
+      transition: border-color 0.15s, background 0.15s;
+    }
+    .portfolio-link:hover { border-color: #fff; background: #fff; color: #000; }
+
+    /* Responsive */
+    @media (max-width: 1100px) { .team-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 580px)  { .team-grid { grid-template-columns: 1fr; } .team-card-img { height: 260px; } }
+  </style>
 </head>
 <body>
 
@@ -14,7 +185,18 @@
 <nav class="navbar" id="navbar">
   <div class="navbar-inner">
     <a href="../index.html" class="nav-brand">
-      <div class="nav-logo"><svg width="18" height="18" viewBox="0 0 20 20" fill="none"><rect x="1" y="5" width="6" height="10" rx="1.5" fill="white" opacity="0.95"/><rect x="11" y="5" width="4" height="3" rx="1" fill="white" opacity="0.8"/><rect x="11" y="12" width="4" height="3" rx="1" fill="white" opacity="0.8"/></svg></div>
+      <!-- Custom logo icon: circuit/server mark -->
+      <div class="nav-logo-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="2" y="6" width="8" height="12" rx="1" fill="#000"/>
+          <rect x="13" y="6" width="5" height="4" rx="0.5" fill="#000"/>
+          <rect x="13" y="14" width="5" height="4" rx="0.5" fill="#000"/>
+          <rect x="21" y="9" width="2" height="1.5" rx="0.3" fill="#000" opacity="0.6"/>
+          <rect x="21" y="13.5" width="2" height="1.5" rx="0.3" fill="#000" opacity="0.6"/>
+          <circle cx="6" cy="10" r="1" fill="#fff" opacity="0.7"/>
+          <circle cx="6" cy="14" r="1" fill="#fff" opacity="0.7"/>
+        </svg>
+      </div>
       IT<span class="brand-accent">Services</span>
     </a>
     <ul class="nav-links">
@@ -54,29 +236,26 @@
 <section class="section">
   <div class="container">
     <div class="about-intro-grid">
-      <!-- Image -->
       <div class="reveal">
         <div class="about-img-wrap">
-          <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&h=600&fit=crop&q=80" alt="Our office and team" loading="lazy"/>
+          <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&h=600&fit=crop&q=80" alt="Our office" loading="lazy"/>
           <div class="about-img-overlay"></div>
           <div class="about-img-badge">
-            <div style="width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--electric),var(--pulse));display:flex;align-items:center;justify-content:center;font-weight:800;font-size:0.9rem;color:#050810">50+</div>
-            <div><strong style="font-size:0.85rem;display:block">Senior Engineers</strong><small style="color:var(--fg3);font-size:0.75rem">Across 18 countries</small></div>
+            <div style="width:38px;height:38px;background:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:0.9rem;color:#000">50+</div>
+            <div><strong style="font-size:0.9rem;display:block">Senior Engineers</strong><small style="color:#666;font-size:0.75rem">Across 18 countries</small></div>
           </div>
         </div>
       </div>
-
-      <!-- Copy -->
       <div class="reveal reveal-delay-2">
-        <span class="label label-pulse">WHO WE ARE</span>
+        <span class="label">WHO WE ARE</span>
         <h2 class="heading-1" style="margin:1rem 0">A different kind of technology partner</h2>
         <p class="body-md text-muted" style="margin-bottom:1rem">We're a team of 50+ senior engineers, architects, and security specialists working remotely across 18 countries. Every person on our team has a minimum of 5 years of production experience.</p>
-        <p class="body-md text-muted" style="margin-bottom:1.5rem">Our model: we partner deeply with a select number of clients, embed in your engineering culture, and take true ownership of outcomes — not just deliverables.</p>
+        <p class="body-md text-muted" style="margin-bottom:1.75rem">Our model: we partner deeply with a select number of clients, embed in your engineering culture, and take true ownership of outcomes — not just deliverables.</p>
         <div class="about-highlights" style="margin-bottom:2rem">
-          <div class="about-highlight"><i class="bi bi-award" style="color:var(--amber)"></i><span>AWS Select Consulting Partner</span></div>
-          <div class="about-highlight"><i class="bi bi-shield-check" style="color:var(--emerald)"></i><span>ISO 27001 Certified</span></div>
-          <div class="about-highlight"><i class="bi bi-lock" style="color:var(--electric)"></i><span>SOC 2 Type II Compliant</span></div>
-          <div class="about-highlight"><i class="bi bi-globe" style="color:var(--pulse)"></i><span>18 Countries, 1 Team Culture</span></div>
+          <div class="about-highlight"><i class="bi bi-award"></i><span>AWS Select Consulting Partner</span></div>
+          <div class="about-highlight"><i class="bi bi-shield-check"></i><span>ISO 27001 Certified</span></div>
+          <div class="about-highlight"><i class="bi bi-lock"></i><span>SOC 2 Type II Compliant</span></div>
+          <div class="about-highlight"><i class="bi bi-globe"></i><span>18 Countries, 1 Team Culture</span></div>
         </div>
         <a href="contact.html" class="btn btn-primary">Let's Talk <span class="arrow"><i class="bi bi-arrow-right"></i></span></a>
       </div>
@@ -102,15 +281,15 @@
   <div class="container">
     <div class="section-header reveal"><span class="label">WHAT DRIVES US</span><h2 class="heading-1" style="margin-bottom:0">Mission &amp; Vision</h2></div>
     <div class="mv-grid">
-      <div class="mv-card reveal" style="--mv-color:var(--electric)">
+      <div class="mv-card reveal">
         <div class="big-icon">🎯</div>
         <h3>Our Mission</h3>
         <p>To be the most trusted technology partner for ambitious companies — delivering engineering excellence that drives real business outcomes. We measure our success by your success.</p>
       </div>
-      <div class="mv-card reveal reveal-delay-1" style="--mv-color:var(--pulse)">
+      <div class="mv-card reveal reveal-delay-1">
         <div class="big-icon">🔭</div>
         <h3>Our Vision</h3>
-        <p>A world where every great company has access to world-class technology expertise — regardless of their size or location. We're building that bridge, one project at a time.</p>
+        <p>A world where every great company has access to world-class technology expertise — regardless of size or location. We're building that bridge, one project at a time.</p>
       </div>
     </div>
   </div>
@@ -121,87 +300,105 @@
   <div class="container">
     <div class="section-header reveal"><span class="label">HOW WE OPERATE</span><h2 class="heading-1">Our Core Values</h2></div>
     <div class="values-grid">
-      <div class="value-card reveal">
-        <div class="value-icon" style="color:var(--electric);background:rgba(0,232,255,0.1)"><i class="bi bi-bullseye"></i></div>
-        <h3>Outcome Obsessed</h3>
-        <p>We focus on your business goals, not just technical deliverables. Every decision we make is anchored to the outcomes that matter to you.</p>
-      </div>
-      <div class="value-card reveal reveal-delay-1">
-        <div class="value-icon" style="color:var(--pulse);background:rgba(176,108,255,0.1)"><i class="bi bi-transparency"></i></div>
-        <h3>Radical Transparency</h3>
-        <p>No surprises. No hidden progress. We over-communicate, flag issues early, and share the full picture — good or bad — at all times.</p>
-      </div>
-      <div class="value-card reveal reveal-delay-2">
-        <div class="value-icon" style="color:var(--emerald);background:rgba(15,240,160,0.1)"><i class="bi bi-mortarboard"></i></div>
-        <h3>Continuous Learning</h3>
-        <p>Technology never stands still, and neither do we. Every engineer on our team dedicates time each week to staying sharp and levelling up.</p>
-      </div>
-      <div class="value-card reveal">
-        <div class="value-icon" style="color:var(--amber);background:rgba(255,197,51,0.1)"><i class="bi bi-people"></i></div>
-        <h3>Partnership First</h3>
-        <p>We don't want to be a vendor. We want to be a trusted extension of your team — sharing the wins, the challenges, and the mission.</p>
-      </div>
-      <div class="value-card reveal reveal-delay-1">
-        <div class="value-icon" style="color:var(--rose);background:rgba(255,77,109,0.1)"><i class="bi bi-award"></i></div>
-        <h3>Zero Compromise Quality</h3>
-        <p>We refuse to ship work we're not proud of. Our internal code review and QA standards exceed what most enterprises require.</p>
-      </div>
-      <div class="value-card reveal reveal-delay-2">
-        <div class="value-icon" style="color:var(--electric);background:rgba(0,232,255,0.1)"><i class="bi bi-heart"></i></div>
-        <h3>Human-Centred</h3>
-        <p>Behind every great product is a human user. We design and build with real empathy for the people who will use what we create.</p>
-      </div>
+      <div class="value-card reveal"><div class="value-icon"><i class="bi bi-bullseye"></i></div><h3>Outcome Obsessed</h3><p>We focus on your business goals, not just technical deliverables. Every decision anchored to outcomes that matter to you.</p></div>
+      <div class="value-card reveal reveal-delay-1"><div class="value-icon"><i class="bi bi-eye"></i></div><h3>Radical Transparency</h3><p>No surprises. We over-communicate, flag issues early, and share the full picture at all times.</p></div>
+      <div class="value-card reveal reveal-delay-2"><div class="value-icon"><i class="bi bi-mortarboard"></i></div><h3>Continuous Learning</h3><p>Technology never stands still. Every engineer dedicates time each week to staying sharp and levelling up.</p></div>
+      <div class="value-card reveal"><div class="value-icon"><i class="bi bi-people"></i></div><h3>Partnership First</h3><p>We want to be a trusted extension of your team — sharing the wins, the challenges, and the mission.</p></div>
+      <div class="value-card reveal reveal-delay-1"><div class="value-icon"><i class="bi bi-award"></i></div><h3>Zero Compromise Quality</h3><p>We refuse to ship work we're not proud of. Our standards exceed what most enterprises require.</p></div>
+      <div class="value-card reveal reveal-delay-2"><div class="value-icon"><i class="bi bi-heart"></i></div><h3>Human-Centred</h3><p>Behind every great product is a human user. We design and build with real empathy for people.</p></div>
     </div>
   </div>
 </section>
 
-<!-- TEAM -->
-<section class="section" id="team" style="padding-top:0" aria-label="Our team">
+<!-- ════════════════════════════════
+     TEAM
+════════════════════════════════ -->
+<section class="section" id="team" aria-label="Our team">
   <div class="container">
-    <div class="section-header reveal"><span class="label">THE PEOPLE</span><h2 class="heading-1">Meet the Leadership Team</h2></div>
+    <div class="section-header reveal">
+      <span class="label">THE PEOPLE</span>
+      <h2 class="heading-1">Meet the Leadership Team</h2>
+      <p style="color:#555;font-size:0.92rem;margin-top:0.8rem;letter-spacing:0.02em">The minds behind every project. Hover to see the real them.</p>
+    </div>
+
     <div class="team-grid">
 
+      <!-- AWK-3 — Founder (Rocky) -->
       <div class="team-card reveal">
-        <div class="team-card-img" style="background:linear-gradient(135deg,#1a1d3a,#0d1a4a)">
-          <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&h=300&fit=crop&q=80" alt="Alex Chen"/>
+        <div class="team-card-img">
+          <span class="founder-badge">★ Founder</span>
+          <img src="../images/slack.jpg" alt="Awk-3 — Founder & CEO"/>
+          <div class="team-overlay">
+            <div class="team-socials">
+              <a href="https://www.linkedin.com/in/ishimwe-rocky-1210833b8/" target="_blank" rel="noopener" class="team-social-btn" title="LinkedIn"><i class="bi bi-linkedin"></i></a>
+              <a href="https://github.com/rockyishimwe" target="_blank" rel="noopener" class="team-social-btn" title="GitHub"><i class="bi bi-github"></i></a>
+              <a href="mailto:rockyishimwe9@gmail.com" class="team-social-btn" title="Email"><i class="bi bi-envelope"></i></a>
+              <a href="tel:+250791039241" class="team-social-btn" title="Phone"><i class="bi bi-telephone"></i></a>
+            </div>
+          </div>
         </div>
         <div class="team-card-body">
-          <strong>Alex Chen</strong>
-          <span>CEO &amp; Co-Founder</span>
-          <p class="team-card-bio">15 years in enterprise software. Previously Principal Engineer at Stripe. Passionate about distributed systems and engineering culture.</p>
+          <span class="team-name">Awk-3</span>
+          <span class="team-role">CEO &amp; Founder</span>
+          <p class="team-bio">The visionary behind IT Services Co. A decade of building systems that scale. Obsessed with engineering culture, clean architecture, and outcomes over hours billed.</p>
+          <a href="../portfolio.html" class="portfolio-link"><i class="bi bi-person-badge"></i> View Portfolio</a>
         </div>
       </div>
 
+      <!-- ALBERT -->
       <div class="team-card reveal reveal-delay-1">
-        <div class="team-card-img" style="background:linear-gradient(135deg,#1a0d3a,#300d4a)">
-          <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=400&h=300&fit=crop&q=80" alt="Priya Nair"/>
+        <div class="team-card-img">
+          <img src="../images/albert.jpg" alt="Albert — Head of Cloud"/>
+          <div class="team-overlay">
+            <div class="team-socials">
+              <a href="#" class="team-social-btn" title="LinkedIn"><i class="bi bi-linkedin"></i></a>
+              <a href="#" class="team-social-btn" title="GitHub"><i class="bi bi-github"></i></a>
+              <a href="#" class="team-social-btn" title="Email"><i class="bi bi-envelope"></i></a>
+            </div>
+          </div>
         </div>
         <div class="team-card-body">
-          <strong>Priya Nair</strong>
-          <span>CTO &amp; Co-Founder</span>
-          <p class="team-card-bio">Cloud architect and security specialist. AWS Hero, ex-Cloudflare. Designed infrastructure for 3 unicorn startups from the ground up.</p>
+          <span class="team-name">Albert</span>
+          <span class="team-role">Head of Cloud &amp; DevOps</span>
+          <p class="team-bio">AWS-certified cloud architect with a passion for infrastructure that never sleeps. Delivered zero-downtime migrations for 40+ enterprise clients worldwide.</p>
         </div>
       </div>
 
+      <!-- ROBERT -->
       <div class="team-card reveal reveal-delay-2">
-        <div class="team-card-img" style="background:linear-gradient(135deg,#0d3a1a,#0d4a30)">
-          <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=300&fit=crop&q=80" alt="Marcus Williams"/>
+        <div class="team-card-img">
+          <img src="../images/robert.jpg" alt="Robert — Head of Cybersecurity"/>
+          <div class="team-overlay">
+            <div class="team-socials">
+              <a href="#" class="team-social-btn" title="LinkedIn"><i class="bi bi-linkedin"></i></a>
+              <a href="#" class="team-social-btn" title="X / Twitter"><i class="bi bi-twitter-x"></i></a>
+              <a href="#" class="team-social-btn" title="Email"><i class="bi bi-envelope"></i></a>
+            </div>
+          </div>
         </div>
         <div class="team-card-body">
-          <strong>Marcus Williams</strong>
-          <span>Head of Cybersecurity</span>
-          <p class="team-card-bio">Former NSA contractor turned ethical hacker. CISSP, OSCP certified. Has conducted 400+ penetration tests across finance, healthcare, and defense.</p>
+          <span class="team-name">Robert</span>
+          <span class="team-role">Head of Cybersecurity</span>
+          <p class="team-bio">CISSP &amp; OSCP certified. Conducted 300+ penetration tests across finance, healthcare, and defence. Former ethical hacker turned security architect.</p>
         </div>
       </div>
 
+      <!-- FOREVER HYACINTHE -->
       <div class="team-card reveal reveal-delay-3">
-        <div class="team-card-img" style="background:linear-gradient(135deg,#3a1a0d,#4a300d)">
-          <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=300&fit=crop&q=80" alt="Sofia Romero"/>
+        <div class="team-card-img">
+          <img src="../images/sarah.jpg" alt="Forever Hyacinthe — Head of AI & Data" style="object-position:center top"/>
+          <div class="team-overlay">
+            <div class="team-socials">
+              <a href="#" class="team-social-btn" title="LinkedIn"><i class="bi bi-linkedin"></i></a>
+              <a href="#" class="team-social-btn" title="GitHub"><i class="bi bi-github"></i></a>
+              <a href="#" class="team-social-btn" title="Email"><i class="bi bi-envelope"></i></a>
+            </div>
+          </div>
         </div>
         <div class="team-card-body">
-          <strong>Sofia Romero</strong>
-          <span>Head of AI &amp; Data</span>
-          <p class="team-card-bio">PhD in Machine Learning from MIT. Led AI product teams at Google Brain and DeepMind before joining IT Services to build real-world AI solutions.</p>
+          <span class="team-name">Forever Hyacinthe</span>
+          <span class="team-role">Head of AI &amp; Data</span>
+          <p class="team-bio">ML researcher turned product engineer. Built NLP pipelines and LLM integrations powering real business intelligence for 30+ enterprise clients.</p>
         </div>
       </div>
 
@@ -217,59 +414,31 @@
         <span class="label">OUR JOURNEY</span>
         <h2 class="heading-1" style="margin:1rem 0 2rem">12 Years of Building</h2>
         <div class="timeline">
-          <div class="timeline-item">
-            <div class="timeline-dot"></div>
-            <p class="timeline-year">2012</p>
-            <h4>Founded in San Francisco</h4>
-            <p>Alex and Priya founded IT Services Co. with a team of 4 engineers and a simple belief: outcomes over hours.</p>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-dot" style="background:var(--pulse)"></div>
-            <p class="timeline-year" style="color:var(--pulse)">2015</p>
-            <h4>First Enterprise Clients</h4>
-            <p>Secured our first Fortune 500 clients. Grew to 20 engineers. Achieved AWS Select Partner status.</p>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-dot" style="background:var(--emerald)"></div>
-            <p class="timeline-year" style="color:var(--emerald)">2018</p>
-            <h4>Cybersecurity Practice Launched</h4>
-            <p>Grew into cybersecurity, building a dedicated SOC team and earning ISO 27001 certification.</p>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-dot" style="background:var(--amber)"></div>
-            <p class="timeline-year" style="color:var(--amber)">2021</p>
-            <h4>AI &amp; ML Division</h4>
-            <p>Launched dedicated AI practice. Delivered LLM integration projects for 30+ enterprises in the first year.</p>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-dot"></div>
-            <p class="timeline-year">2024</p>
-            <h4>200+ Clients, 18 Countries</h4>
-            <p>Now serving over 200 clients globally, with a team spread across 18 countries and growing.</p>
-          </div>
+          <div class="timeline-item"><div class="timeline-dot"></div><p class="timeline-year">2012</p><h4>Founded</h4><p>Awk-3 founded IT Services Co. with 4 engineers and one belief: outcomes over hours.</p></div>
+          <div class="timeline-item"><div class="timeline-dot"></div><p class="timeline-year">2015</p><h4>First Enterprise Clients</h4><p>Secured first Fortune 500 clients. Grew to 20 engineers. Achieved AWS Select Partner status.</p></div>
+          <div class="timeline-item"><div class="timeline-dot"></div><p class="timeline-year">2018</p><h4>Cybersecurity Practice</h4><p>Built a dedicated SOC team and earned ISO 27001 certification.</p></div>
+          <div class="timeline-item"><div class="timeline-dot"></div><p class="timeline-year">2021</p><h4>AI &amp; ML Division</h4><p>Launched dedicated AI practice. 30+ LLM integrations delivered in year one.</p></div>
+          <div class="timeline-item"><div class="timeline-dot"></div><p class="timeline-year">2024</p><h4>200+ Clients, 18 Countries</h4><p>Serving over 200 clients globally with a team spread across 18 countries.</p></div>
         </div>
       </div>
       <div class="reveal reveal-delay-2" style="position:sticky;top:100px">
-        <div style="border-radius:var(--r-xl);overflow:hidden;box-shadow:var(--shadow-xl)">
-          <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=700&h=500&fit=crop&q=80" alt="Team at work" loading="lazy" style="width:100%;display:block"/>
+        <div style="overflow:hidden;border:1px solid #1a1a1a;box-shadow:0 40px 80px rgba(0,0,0,0.9)">
+          <img src="../images/beach.jpg" alt="Team spirit" loading="lazy" style="width:100%;display:block;filter:grayscale(60%) brightness(0.85);transition:filter 0.5s ease"/>
         </div>
-        <div style="margin-top:1.25rem;background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);padding:1.5rem">
-          <h4 style="margin-bottom:1rem;font-size:1rem">Current Openings</h4>
-          <div style="display:flex;flex-direction:column;gap:0.6rem">
-            <div style="display:flex;justify-content:space-between;align-items:center;font-size:0.875rem">
-              <span>Senior Cloud Architect</span>
-              <span style="font-family:var(--font-mono);font-size:0.7rem;color:var(--electric);background:var(--electric-g);padding:2px 8px;border-radius:var(--r-full)">Remote</span>
+        <div style="margin-top:1px;background:#0d0d0d;border:1px solid #1a1a1a;border-top:none;padding:1.75rem">
+          <h4 style="margin-bottom:1rem;font-size:0.78rem;letter-spacing:0.18em;text-transform:uppercase;color:#666">Current Openings</h4>
+          <div style="display:flex;flex-direction:column;gap:0">
+            <div style="display:flex;justify-content:space-between;align-items:center;font-size:0.88rem;padding:0.8rem 0;border-bottom:1px solid #1a1a1a">
+              <span>Senior Cloud Architect</span><span style="font-size:0.62rem;letter-spacing:0.12em;text-transform:uppercase;color:#fff;background:#1f1f1f;padding:3px 10px;border:1px solid #2a2a2a">Remote</span>
             </div>
-            <div style="display:flex;justify-content:space-between;align-items:center;font-size:0.875rem">
-              <span>AI/ML Engineer</span>
-              <span style="font-family:var(--font-mono);font-size:0.7rem;color:var(--electric);background:var(--electric-g);padding:2px 8px;border-radius:var(--r-full)">Remote</span>
+            <div style="display:flex;justify-content:space-between;align-items:center;font-size:0.88rem;padding:0.8rem 0;border-bottom:1px solid #1a1a1a">
+              <span>AI/ML Engineer</span><span style="font-size:0.62rem;letter-spacing:0.12em;text-transform:uppercase;color:#fff;background:#1f1f1f;padding:3px 10px;border:1px solid #2a2a2a">Remote</span>
             </div>
-            <div style="display:flex;justify-content:space-between;align-items:center;font-size:0.875rem">
-              <span>Penetration Tester</span>
-              <span style="font-family:var(--font-mono);font-size:0.7rem;color:var(--pulse);background:var(--pulse-g);padding:2px 8px;border-radius:var(--r-full)">Hybrid</span>
+            <div style="display:flex;justify-content:space-between;align-items:center;font-size:0.88rem;padding:0.8rem 0">
+              <span>Penetration Tester</span><span style="font-size:0.62rem;letter-spacing:0.12em;text-transform:uppercase;color:#aaa;background:#111;padding:3px 10px;border:1px solid #222">Hybrid</span>
             </div>
           </div>
-          <a href="contact.html" class="btn btn-outline-electric btn-sm" style="margin-top:1rem;width:100%;justify-content:center">View All Openings</a>
+          <a href="contact.html" class="btn btn-primary btn-sm" style="margin-top:1.25rem;width:100%;justify-content:center">View All Openings <i class="bi bi-arrow-right"></i></a>
         </div>
       </div>
     </div>
@@ -298,21 +467,44 @@
     <div class="footer-newsletter">
       <div class="footer-nl-inner">
         <div><h3 class="nl-title">Stay ahead of the curve.</h3><p class="nl-desc">Tech insights and case studies, twice a month.</p></div>
-        <form class="nl-form" onsubmit="handleNewsletter(event)"><input type="email" class="nl-input" placeholder="your@company.com" required/><button type="submit" class="btn btn-primary btn-sm">Subscribe</button></form>
+        <form class="nl-form" onsubmit="handleNewsletter(event)">
+          <input type="email" class="nl-input" placeholder="your@company.com" required/>
+          <button type="submit" class="btn btn-primary btn-sm">Subscribe</button>
+        </form>
       </div>
     </div>
     <div class="footer-main">
       <div>
-        <div class="footer-brand-wrap"><div class="nav-logo"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="1" y="5" width="6" height="10" rx="1" fill="white" opacity="0.9"/><rect x="11" y="5" width="4" height="3" rx="1" fill="white" opacity="0.7"/><rect x="11" y="12" width="4" height="3" rx="1" fill="white" opacity="0.7"/></svg></div><span class="footer-brand-name">IT<span class="brand-accent">Services</span></span></div>
+        <div class="footer-brand-wrap">
+          <div class="nav-logo-icon" style="width:28px;height:28px;background:#fff;display:flex;align-items:center;justify-content:center">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><rect x="2" y="6" width="8" height="12" rx="1" fill="#000"/><rect x="13" y="6" width="5" height="4" rx="0.5" fill="#000"/><rect x="13" y="14" width="5" height="4" rx="0.5" fill="#000"/><rect x="21" y="9" width="2" height="1.5" rx="0.3" fill="#000" opacity="0.6"/><rect x="21" y="13.5" width="2" height="1.5" rx="0.3" fill="#000" opacity="0.6"/></svg>
+          </div>
+          <span class="footer-brand-name">IT<span class="brand-accent">Services</span></span>
+        </div>
         <p class="footer-tagline">Engineering the technology foundation for tomorrow's leading companies.</p>
-        <div class="footer-social"><a href="#" class="social-icon"><i class="bi bi-linkedin"></i></a><a href="#" class="social-icon"><i class="bi bi-github"></i></a><a href="#" class="social-icon"><i class="bi bi-twitter-x"></i></a></div>
+        <div class="footer-social">
+          <a href="https://www.linkedin.com/in/ishimwe-rocky-1210833b8/" target="_blank" rel="noopener" class="social-icon" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+          <a href="https://github.com/rockyishimwe" target="_blank" rel="noopener" class="social-icon" aria-label="GitHub"><i class="bi bi-github"></i></a>
+          <a href="mailto:rockyishimwe9@gmail.com" class="social-icon" aria-label="Email"><i class="bi bi-envelope"></i></a>
+          <a href="tel:+250791039241" class="social-icon" aria-label="Phone"><i class="bi bi-telephone"></i></a>
+        </div>
       </div>
       <div class="footer-col"><h5>Services</h5><ul class="footer-links"><li><a href="services.html">Web Development</a></li><li><a href="services.html">Cloud &amp; DevOps</a></li><li><a href="services.html">Cybersecurity</a></li><li><a href="services.html">AI &amp; Automation</a></li></ul></div>
-      <div class="footer-col"><h5>Company</h5><ul class="footer-links"><li><a href="about.html">About Us</a></li><li><a href="contact.html">Contact</a></li><li><a href="quote.html">Get a Quote</a></li></ul></div>
-      <div class="footer-col"><h5>Contact</h5><ul class="footer-contact-list"><li class="footer-contact-item"><i class="bi bi-envelope"></i><a href="mailto:hello@itservices.com">hello@itservices.com</a></li><li class="footer-contact-item"><i class="bi bi-telephone"></i><a href="tel:+14155550100">+1 (415) 555-0100</a></li></ul></div>
+      <div class="footer-col"><h5>Company</h5><ul class="footer-links"><li><a href="about.html">About Us</a></li><li><a href="about.html#team">Our Team</a></li><li><a href="../portfolio.html">Founder Portfolio</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+      <div class="footer-col"><h5>Contact</h5><ul class="footer-contact-list">
+        <li class="footer-contact-item"><i class="bi bi-envelope"></i><a href="mailto:rockyishimwe9@gmail.com">rockyishimwe9@gmail.com</a></li>
+        <li class="footer-contact-item"><i class="bi bi-telephone"></i><a href="tel:+250791039241">+250 791 039 241</a></li>
+        <li class="footer-contact-item"><i class="bi bi-linkedin"></i><a href="https://www.linkedin.com/in/ishimwe-rocky-1210833b8/" target="_blank" rel="noopener">LinkedIn</a></li>
+        <li class="footer-contact-item"><i class="bi bi-github"></i><a href="https://github.com/rockyishimwe" target="_blank" rel="noopener">github.com/rockyishimwe</a></li>
+      </ul></div>
     </div>
   </div>
-  <div class="container"><div class="footer-bottom"><p class="footer-copy">© <span class="footer-year">2024</span> IT Services Co.</p><nav class="footer-legal"><a href="#">Privacy Policy</a><a href="#">Terms</a></nav></div></div>
+  <div class="container">
+    <div class="footer-bottom">
+      <p class="footer-copy">© <span class="footer-year">2025</span> IT Services Co. All rights reserved.</p>
+      <nav class="footer-legal"><a href="#">Privacy Policy</a><a href="#">Terms</a></nav>
+    </div>
+  </div>
 </footer>
 
 <script src="../js/main.js"></script>

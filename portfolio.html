@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Ishimwe Rocky | Aspiring Software Developer</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --black: #000000;
+      --white: #ffffff;
+      --gray-100: #f5f5f5;
+      --gray-200: #eeeeee;
+      --gray-300: #e0e0e0;
+      --gray-400: #bdbdbd;
+      --gray-500: #9e9e9e;
+      --gray-600: #757575;
+      --gray-700: #616161;
+      --gray-800: #424242;
+      --gray-900: #212121;
+      --line: #333333;
+      --dim: #666666;
+    }
+
+    [data-theme="light"] {
+      --black: #ffffff;
+      --white: #000000;
+      --gray-100: #212121;
+      --gray-200: #424242;
+      --gray-300: #616161;
+      --gray-400: #757575;
+      --gray-500: #9e9e9e;
+      --gray-600: #bdbdbd;
+      --gray-700: #e0e0e0;
+      --gray-800: #eeeeee;
+      --gray-900: #f5f5f5;
+      --line: #cccccc;
+      --dim: #999999;
+    }
+
+    html, body { height: 100%; }
+
+    body {
+      font-family: 'JetBrains Mono', monospace;
+      background-color: var(--black);
+      color: var(--white);
+      margin: 0;
+      transition: background-color 240ms ease, color 240ms ease;
+      line-height: 1.6;
+    }
+
+    .fade-in-up { 
+      animation: fadeInUp 0.8s ease-out forwards; 
+      opacity: 0; 
+    }
+
+    @keyframes fadeInUp { 
+      from { opacity: 0; transform: translateY(20px); } 
+      to { opacity: 1; transform: translateY(0); } 
+    }
+
+    .delay-100 { animation-delay: 0.1s; } 
+    .delay-200 { animation-delay: 0.2s; } 
+    .delay-300 { animation-delay: 0.3s; }
+
+    .glass-card {
+      background: transparent;
+      border: 1px solid var(--line);
+      transition: all 0.28s cubic-bezier(0.4,0,0.2,1);
+    }
+
+    .glass-card:hover {
+      border-color: var(--white);
+    }
+
+    .input-field {
+      background: transparent;
+      border: 1px solid var(--line);
+      color: var(--white);
+      transition: all 0.24s ease;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 14px;
+    }
+
+    .input-field:focus {
+      border-color: var(--white);
+      outline: none;
+    }
+
+    .skill-badge { 
+      font-size: 10px; 
+      color: var(--dim); 
+      text-transform: uppercase; 
+      letter-spacing: 2px; 
+      font-weight: 600;
+    }
+
+    .timeline-dot { 
+      width: 10px; 
+      height: 10px; 
+      border-radius: 0; 
+      background: var(--white); 
+      transform: rotate(45deg);
+    }
+
+    .muted { color: var(--dim); }
+    .accent { color: var(--white); font-weight: 600; }
+
+    .lang-icon {
+      width: 44px; 
+      height: 44px; 
+      display: inline-flex; 
+      align-items: center; 
+      justify-content: center;
+      border: 1px solid var(--line);
+      transition: all 180ms ease;
+    }
+
+    .lang-icon:hover {
+      border-color: var(--white);
+    }
+
+    .lang-icon svg { 
+      display: block; 
+      width: 28px; 
+      height: 28px;
+    }
+
+    /* SVG color adjustments for dark/light mode */
+    .lang-icon svg rect,
+    .lang-icon svg path,
+    .lang-icon svg circle,
+    .lang-icon svg ellipse {
+      transition: fill 240ms ease, stroke 240ms ease;
+    }
+
+    [data-theme="dark"] .lang-icon svg rect[fill="#f7df1e"] { fill: #ffd966; }
+    [data-theme="dark"] .lang-icon svg rect[fill="#3178c6"] { fill: #569cd6; }
+    [data-theme="dark"] .lang-icon svg rect[fill="#61dafb"] { fill: #9ad9f0; }
+    [data-theme="dark"] .lang-icon svg rect[fill="#3c873a"] { fill: #6aaa64; }
+    [data-theme="dark"] .lang-icon svg rect[fill="#3776ab"] { fill: #6495c9; }
+    [data-theme="dark"] .lang-icon svg rect[fill="#e34f26"] { fill: #f0815c; }
+    [data-theme="dark"] .lang-icon svg rect[fill="#1572b6"] { fill: #5c9bd5; }
+    
+    [data-theme="light"] .lang-icon svg rect[fill="#f7df1e"] { fill: #e6b800; }
+    [data-theme="light"] .lang-icon svg rect[fill="#3178c6"] { fill: #2b5797; }
+    [data-theme="light"] .lang-icon svg rect[fill="#61dafb"] { fill: #0099cc; }
+    [data-theme="light"] .lang-icon svg rect[fill="#3c873a"] { fill: #2e7d32; }
+    [data-theme="light"] .lang-icon svg rect[fill="#3776ab"] { fill: #1e4b7a; }
+    [data-theme="light"] .lang-icon svg rect[fill="#e34f26"] { fill: #b33c1c; }
+    [data-theme="light"] .lang-icon svg rect[fill="#1572b6"] { fill: #0f4b7a; }
+
+    .profile-img {
+      width: 140px; 
+      height: 140px; 
+      border-radius: 0;
+      object-fit: cover;
+      border: 2px solid var(--line);
+      transition: all 220ms ease;
+      filter: grayscale(100%);
+    }
+
+    .profile-img:hover {
+      border-color: var(--white);
+      filter: grayscale(0%);
+    }
+
+    .theme-toggle {
+      display: inline-flex; 
+      align-items: center; 
+      gap: 8px; 
+      padding: 8px 16px;
+      border: 1px solid var(--line);
+      background: transparent;
+      cursor: pointer;
+      transition: all 180ms ease;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--dim);
+    }
+
+    .theme-toggle:hover {
+      border-color: var(--white);
+      color: var(--white);
+    }
+
+    .theme-toggle:active { 
+      transform: scale(0.98); 
+    }
+
+    nav {
+      background: var(--black);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: none;
+    }
+
+    .btn {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 14px 28px;
+      border: 1px solid var(--line);
+      background: transparent;
+      color: var(--dim);
+      transition: all 0.2s ease;
+      display: inline-block;
+      will-change: transform;
+    }
+
+    .btn:hover { 
+      border-color: var(--white); 
+      color: var(--white); 
+    }
+
+    .btn:active { transform: scale(0.98); }
+
+    .btn-primary {
+      background: var(--white);
+      color: var(--black);
+      border-color: var(--white);
+    }
+
+    .btn-primary:hover { 
+      background: transparent; 
+      color: var(--white); 
+    }
+
+    .section-title {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--dim);
+      margin-bottom: 12px;
+    }
+
+    h1, h2, h3, h4 {
+      font-weight: 700;
+      letter-spacing: -0.5px;
+    }
+
+    h2 {
+      font-size: 32px;
+      margin-bottom: 24px;
+    }
+
+    h3 {
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+
+    /* Mobile menu */
+    #mobile-menu {
+      background: var(--black);
+      border-left: 1px solid var(--line);
+    }
+
+    .mobile-link {
+      color: var(--dim);
+      text-decoration: none;
+      font-size: 24px;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      transition: color 0.2s ease;
+    }
+
+    .mobile-link:hover {
+      color: var(--white);
+    }
+
+    /* Form select */
+    select.input-field option {
+      background: var(--black);
+      color: var(--white);
+    }
+
+    /* Footer links */
+    footer a {
+      color: var(--dim);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    footer a:hover {
+      color: var(--white);
+    }
+
+    /* Gradient text */
+    .gradient-text {
+      background: none;
+      -webkit-background-clip: unset;
+      background-clip: unset;
+      color: var(--white);
+    }
+
+    /* Responsive */
+    @media (max-width: 640px) { 
+      h1 { font-size: 2.5rem; } 
+    }
+  </style>
+</head>
+<body class="overflow-x-hidden selection:bg-gray-600 selection:text-white" data-theme="dark">
+
+<!-- Navigation -->
+<nav class="fixed top-0 left-0 right-0 z-50 px-6 py-4 flex justify-between items-center">
+  <div class="flex items-center gap-3">
+    <div class="text-xl font-bold tracking-tighter">
+      <span class="text-white">I.</span> ROCKY
+    </div>
+    <div class="hidden sm:flex flex-col text-xs muted">
+      <span class="font-semibold text-white">Software Developer</span>
+      <span class="muted">Rwanda • Open to work</span>
+    </div>
+  </div>
+
+  <div class="hidden md:flex items-center gap-8 text-sm font-medium">
+    <a href="index.html" class="muted hover:text-white transition-colors" style="display:flex;align-items:center;gap:5px"><svg width="12" height="12" viewBox="0 0 20 20" fill="none" style="opacity:0.5"><rect x="1" y="5" width="6" height="10" fill="currentColor"/><rect x="11" y="5" width="4" height="3" fill="currentColor"/><rect x="11" y="12" width="4" height="3" fill="currentColor"/></svg>IT Services</a>
+    <a href="#about" class="muted hover:text-white transition-colors">About</a>
+    <a href="#projects" class="muted hover:text-white transition-colors">Projects</a>
+    <a href="#skills" class="muted hover:text-white transition-colors">Skills</a>
+    <a href="#achievements" class="muted hover:text-white transition-colors">Achievements</a>
+    <a href="#contact" class="muted hover:text-white transition-colors">Contact</a>
+  </div>
+
+  <div class="flex items-center gap-4">
+    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme" title="Toggle light / dark">
+      <i id="theme-icon" data-lucide="sun" class="w-4 h-4"></i>
+      <span id="theme-label" class="text-sm">Dark</span>
+    </button>
+    <button id="menu-btn" class="md:hidden text-white p-2"><i data-lucide="menu"></i></button>
+  </div>
+</nav>
+
+<!-- Mobile Menu -->
+<div id="mobile-menu" class="fixed inset-0 z-[60] bg-black flex flex-col items-center justify-center gap-8 text-2xl font-semibold translate-x-full transition-transform duration-300 md:hidden">
+  <button id="close-btn" class="absolute top-6 right-6 text-gray-400"><i data-lucide="x" class="w-8 h-8"></i></button>
+  <a href="index.html" class="mobile-link">Home</a>
+  <a href="#about" class="mobile-link">About</a>
+  <a href="#projects" class="mobile-link">Projects</a>
+  <a href="#skills" class="mobile-link">Skills</a>
+  <a href="#achievements" class="mobile-link">Achievements</a>
+  <a href="#contact" class="mobile-link">Contact</a>
+</div>
+
+<!-- Hero -->
+<section class="relative min-h-screen flex flex-col items-center justify-center px-4 pt-20 text-center">
+  <div class="absolute top-1/4 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-gray-800/20 blur-[120px] rounded-full -z-10"></div>
+
+  <div class="mb-6 fade-in-up">
+    <div class="inline-flex items-center gap-3 px-4 py-2 border border-[var(--line)]">
+      <img src="images/slack.jpg" alt="Ishimwe Rocky" class="profile-img">
+      <div class="text-left">
+        <div class="text-xs font-semibold uppercase tracking-widest text-white">Ishimwe Rocky</div>
+        <div class="muted text-[12px]">Aspiring Software Developer</div>
+      </div>
+    </div>
+  </div>
+
+  <h1 class="fade-in-up delay-100 text-6xl md:text-8xl font-extrabold tracking-tighter mb-6 text-white">
+    Software Developer
+  </h1>
+
+  <p class="fade-in-up delay-200 text-gray-400 text-lg md:text-xl max-w-2xl mx-auto mb-10 leading-relaxed muted">
+    Building modern, secure, and visually stunning applications through code and creativity. I focus on clean architecture, accessible UI, and pragmatic solutions.
+  </p>
+
+  <div class="fade-in-up delay-300 flex gap-4">
+    <a href="#contact" class="btn btn-primary">Hire Me</a>
+    <a href="#projects" class="btn">Projects</a>
+  </div>
+</section>
+
+<!-- About Me -->
+<section id="about" class="py-24 px-6 max-w-5xl mx-auto text-center">
+  <div class="section-title">About Me</div>
+  <h2 class="text-4xl font-bold mb-6 text-white">About Me</h2>
+  <p class="text-gray-400 text-lg leading-relaxed max-w-3xl mx-auto muted">
+    Hi, I'm <span class="accent">Ishimwe Rocky</span>, an aspiring software developer based in Rwanda. I build web applications that balance performance, security, and delightful user experiences. I enjoy learning new technologies, contributing to open-source, and collaborating with teams to ship meaningful products. Outside of code, I love reading about system design and experimenting with UI micro-interactions.
+  </p>
+
+  <div class="mt-10 grid grid-cols-1 md:grid-cols-3 gap-6">
+    <div class="glass-card p-6">
+      <p class="skill-badge">Focus</p>
+      <h4 class="text-xl font-semibold mt-2 text-white">Frontend & UX</h4>
+      <p class="muted mt-2 text-sm">React, Tailwind, accessibility, animations</p>
+    </div>
+    <div class="glass-card p-6">
+      <p class="skill-badge">Approach</p>
+      <h4 class="text-xl font-semibold mt-2 text-white">Clean Architecture</h4>
+      <p class="muted mt-2 text-sm">Modular code, testing, secure patterns</p>
+    </div>
+    <div class="glass-card p-6">
+      <p class="skill-badge">Mindset</p>
+      <h4 class="text-xl font-semibold mt-2 text-white">Continuous Learning</h4>
+      <p class="muted mt-2 text-sm">Open-source contributions and mentorship</p>
+    </div>
+  </div>
+</section>
+
+<!-- Projects -->
+<section id="projects" class="py-24 px-6 max-w-7xl mx-auto">
+  <div class="section-title text-center">Selected Projects</div>
+  <h3 class="text-4xl font-bold mb-12 text-center text-white">Selected Projects</h3>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+    <div class="glass-card overflow-hidden group p-4">
+      <div class="aspect-video overflow-hidden mb-6 border border-[var(--line)]">
+        <img src="https://images.unsplash.com/photo-1633356122544-f134324a6cee?auto=format&fit=crop&q=80&w=1200&h=675" class="w-full h-full object-cover" alt="React Web App screenshot">
+      </div>
+      <h4 class="text-2xl font-bold mb-2 text-white">React Web App</h4>
+      <p class="muted text-sm">Custom state management, reusable components, and responsive UI. Implemented authentication and role-based access control.</p>
+      <div class="mt-4 flex gap-3">
+        <a class="btn btn-primary text-sm px-3 py-2" href="#" aria-label="View project">View</a>
+        <a class="btn text-sm px-3 py-2" href="#" aria-label="Source code">Source</a>
+      </div>
+    </div>
+
+    <div class="glass-card overflow-hidden group p-4">
+      <div class="aspect-video overflow-hidden mb-6 border border-[var(--line)]">
+        <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&q=80&w=1200&h=675" class="w-full h-full object-cover" alt="Portfolio experiments screenshot">
+      </div>
+      <h4 class="text-2xl font-bold mb-2 text-white">Portfolio Experiments</h4>
+      <p class="muted text-sm">Explorations in CSS animations, layout systems, and performance optimizations for fast-loading pages.</p>
+      <div class="mt-4 flex gap-3">
+        <a class="btn btn-primary text-sm px-3 py-2" href="#" aria-label="View project">View</a>
+        <a class="btn text-sm px-3 py-2" href="#" aria-label="Source code">Source</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Skills with language icons -->
+<section id="skills" class="py-24 px-6 max-w-6xl mx-auto">
+  <div class="section-title text-center">Skills & Languages</div>
+  <h2 class="text-4xl font-bold mb-8 text-center text-white">Skills & Languages</h2>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+    <div>
+      <h3 class="text-2xl font-semibold mb-4 text-white">Core Technologies</h3>
+      <div class="grid grid-cols-2 gap-4">
+        <!-- JavaScript -->
+        <div class="glass-card p-4 flex items-center gap-4">
+          <div class="lang-icon" aria-hidden>
+            <svg viewBox="0 0 128 128" width="28" height="28" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="JavaScript">
+              <rect width="128" height="128" rx="16" fill="#f7df1e"/>
+              <path d="M34 96l8-5c2 4 4 7 10 7 5 0 8-2 8-10V46h-12v36c0 6-2 8-6 8-4 0-6-2-8-6zM86 96l8-5c2 4 4 7 10 7 5 0 8-2 8-10V46h-12v36c0 6-2 8-6 8-4 0-6-2-8-6z" fill="#000" opacity="0.85"/>
+            </svg>
+          </div>
+          <div>
+            <div class="font-semibold text-white">JavaScript</div>
+            <div class="muted text-sm">ES6+, DOM, async</div>
+          </div>
+        </div>
+
+        <!-- TypeScript -->
+        <div class="glass-card p-4 flex items-center gap-4">
+          <div class="lang-icon" aria-hidden>
+            <svg viewBox="0 0 128 128" width="28" height="28" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="TypeScript">
+              <rect width="128" height="128" rx="16" fill="#3178c6"/>
+              <path d="M36 92V36h56v12H60v8h28v12H60v20z" fill="#fff"/>
+            </svg>
+          </div>
+          <div>
+            <div class="font-semibold text-white">TypeScript</div>
+            <div class="muted text-sm">Typed JS, tooling</div>
+          </div>
+        </div>
+
+        <!-- React -->
+        <div class="glass-card p-4 flex items-center gap-4">
+          <div class="lang-icon" aria-hidden>
+            <svg viewBox="0 0 128 128" width="28" height="28" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="React">
+              <rect width="128" height="128" rx="16" fill="#61dafb"/>
+              <g transform="translate(64 64) scale(0.6)" fill="none" stroke="#000" stroke-width="6">
+                <ellipse rx="60" ry="20" transform="rotate(0)"/>
+                <ellipse rx="60" ry="20" transform="rotate(60)"/>
+                <ellipse rx="60" ry="20" transform="rotate(120)"/>
+                <circle r="12" fill="#000"/>
+              </g>
+            </svg>
+          </div>
+          <div>
+            <div class="font-semibold text-white">React</div>
+            <div class="muted text-sm">Hooks, state, components</div>
+          </div>
+        </div>
+
+        <!-- Node.js -->
+        <div class="glass-card p-4 flex items-center gap-4">
+          <div class="lang-icon" aria-hidden>
+            <svg viewBox="0 0 128 128" width="28" height="28" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Node.js">
+              <rect width="128" height="128" rx="16" fill="#3c873a"/>
+              <path d="M64 36l28 16v32L64 108 36 84V52z" fill="#fff" opacity="0.95"/>
+            </svg>
+          </div>
+          <div>
+            <div class="font-semibold text-white">Node.js</div>
+            <div class="muted text-sm">APIs, servers</div>
+          </div>
+        </div>
+
+        <!-- Python -->
+        <div class="glass-card p-4 flex items-center gap-4">
+          <div class="lang-icon" aria-hidden>
+            <svg viewBox="0 0 128 128" width="28" height="28" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Python">
+              <rect width="128" height="128" rx="16" fill="#3776ab"/>
+              <path d="M40 36c0-6 4-10 10-10h18v12H54c-4 0-6 2-6 6v8H40z" fill="#ffd43b"/>
+              <path d="M88 92c0 6-4 10-10 10H60v-12h18c4 0 6-2 6-6v-8h12z" fill="#ffd43b" opacity="0.95"/>
+            </svg>
+          </div>
+          <div>
+            <div class="font-semibold text-white">Python</div>
+            <div class="muted text-sm">Scripting, automation</div>
+          </div>
+        </div>
+
+        <!-- HTML5 -->
+        <div class="glass-card p-4 flex items-center gap-4">
+          <div class="lang-icon" aria-hidden>
+            <svg viewBox="0 0 128 128" width="28" height="28" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="HTML5">
+              <rect width="128" height="128" rx="16" fill="#e34f26"/>
+              <path d="M32 24l8 88 28 8 28-8 8-88H32z" fill="#fff" opacity="0.06"/>
+              <path d="M64 96l-18-5-2-22h10l1 10 9 2 9-2 1-10h10l-3 34-18 5z" fill="#fff"/>
+            </svg>
+          </div>
+          <div>
+            <div class="font-semibold text-white">HTML5</div>
+            <div class="muted text-sm">Semantic markup</div>
+          </div>
+        </div>
+
+        <!-- CSS3 -->
+        <div class="glass-card p-4 flex items-center gap-4">
+          <div class="lang-icon" aria-hidden>
+            <svg viewBox="0 0 128 128" width="28" height="28" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="CSS3">
+              <rect width="128" height="128" rx="16" fill="#1572b6"/>
+              <path d="M32 24l8 88 28 8 28-8 8-88H32z" fill="#fff" opacity="0.06"/>
+              <path d="M64 96l18-5 3-34H64v39z" fill="#fff" opacity="0.9"/>
+            </svg>
+          </div>
+          <div>
+            <div class="font-semibold text-white">CSS3</div>
+            <div class="muted text-sm">Responsive design</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <h3 class="text-2xl font-semibold mb-4 text-white">Tools & Practices</h3>
+      <div class="grid grid-cols-1 gap-4">
+        <div class="glass-card p-4 flex items-center justify-between">
+          <div>
+            <div class="font-semibold text-white">Databases</div>
+            <div class="muted text-sm">MongoDB, PostgreSQL</div>
+          </div>
+          <div class="muted text-sm">Design & scaling</div>
+        </div>
+
+        <div class="glass-card p-4 flex items-center justify-between">
+          <div>
+            <div class="font-semibold text-white">Testing</div>
+            <div class="muted text-sm">Unit & integration</div>
+          </div>
+          <div class="muted text-sm">Jest, Testing Library</div>
+        </div>
+
+        <div class="glass-card p-4 flex items-center justify-between">
+          <div>
+            <div class="font-semibold text-white">DevOps</div>
+            <div class="muted text-sm">Git</div>
+          </div>
+          <div class="muted text-sm">Automation</div>
+        </div>
+
+        <div class="glass-card p-4 flex items-center justify-between">
+          <div>
+            <div class="font-semibold text-white">Security</div>
+            <div class="muted text-sm">Auth, Cyberknights basics</div>
+          </div>
+          <div class="muted text-sm">Best practices</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Achievements -->
+<section id="achievements" class="py-24 px-6 max-w-6xl mx-auto">
+  <div class="section-title text-center">Achievements</div>
+  <h2 class="text-4xl font-bold mb-8 text-center text-white">Achievements</h2>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <div class="glass-card p-6">
+      <h4 class="font-semibold text-xl text-white">Open-source Contributions</h4>
+      <p class="muted mt-2">Contributed bug fixes and features to community projects on GitHub, focusing on accessibility and performance.</p>
+    </div>
+    <div class="glass-card p-6">
+      <h4 class="font-semibold text-xl text-white">Certifications</h4>
+      <p class="muted mt-2">Completed courses and certifications in JavaScript, React, and web security fundamentals.</p>
+    </div>
+    <div class="glass-card p-6">
+      <h4 class="font-semibold text-xl text-white">Freelance Projects</h4>
+      <p class="muted mt-2">Delivered client projects with clear requirements, timely communication, and maintainable code.</p>
+    </div>
+    <div class="glass-card p-6">
+      <h4 class="font-semibold text-xl text-white">Community</h4>
+      <p class="muted mt-2">Mentored junior developers and participated in local tech meetups and hackathons.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Contact -->
+<section id="contact" class="py-24 px-6 relative overflow-hidden">
+  <div class="absolute top-1/2 left-0 w-64 h-64 bg-gray-800/20 blur-[100px] -z-10"></div>
+  <div class="max-w-4xl mx-auto">
+    <div class="text-center mb-12">
+      <div class="section-title">Get in touch</div>
+      <h3 class="text-4xl md:text-5xl font-bold text-white">Let's work together</h3>
+      <p class="muted mt-4">Have a project in mind? Fill out the form and I'll get back to you shortly.</p>
+    </div>
+
+    <div class="glass-card p-8 md:p-12 relative">
+      <form action="#" method="POST" class="space-y-6">
+        <div class="grid md:grid-cols-2 gap-6">
+          <div class="space-y-2">
+            <label class="text-xs font-semibold uppercase tracking-wider muted ml-1">Full Name</label>
+            <input type="text" name="name" placeholder="xxx" required class="input-field w-full px-5 py-4">
+          </div>
+          <div class="space-y-2">
+            <label class="text-xs font-semibold uppercase tracking-wider muted ml-1">Email Address</label>
+            <input type="email" name="email" placeholder="xxx@example.com" required class="input-field w-full px-5 py-4">
+          </div>
+        </div>
+
+        <div class="space-y-2">
+          <label class="text-xs font-semibold uppercase tracking-wider muted ml-1">Subject</label>
+          <select name="subject" class="input-field w-full px-5 py-4 appearance-none cursor-pointer">
+            <option>General Inquiry</option>
+            <option>Project Proposal</option>
+            <option>Job Opportunity</option>
+          </select>
+        </div>
+
+        <div class="space-y-2">
+          <label class="text-xs font-semibold uppercase tracking-wider muted ml-1">Message</label>
+          <textarea name="message" rows="5" placeholder="Tell me about your project..." required class="input-field w-full px-5 py-4 resize-none"></textarea>
+        </div>
+
+        <div class="pt-4">
+          <button type="submit" class="w-full md:w-max px-12 py-4 btn btn-primary flex items-center justify-center gap-3 group">
+            Send Message
+            <i data-lucide="send" class="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform"></i>
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <!-- Quick Contact Info -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
+      <div class="flex items-center gap-4 p-6 glass-card">
+        <div class="w-10 h-10 border border-[var(--line)] flex items-center justify-center">
+          <i data-lucide="mail" class="w-5 h-5"></i>
+        </div>
+        <div>
+          <p class="text-[10px] muted uppercase font-bold">Email</p>
+          <p class="text-sm text-white"><a href="mailto:rockyishimwe9@gmail.com">rockyishimwe9@gmail.com</a></p>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-4 p-6 glass-card">
+        <div class="w-10 h-10 border border-[var(--line)] flex items-center justify-center">
+          <i data-lucide="phone" class="w-5 h-5"></i>
+        </div>
+        <div>
+          <p class="text-[10px] muted uppercase font-bold">Phone</p>
+          <p class="text-sm text-white"><a href="tel:+250791039241" style="color:inherit">+250 791 039 241</a></p>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-4 p-6 glass-card">
+        <div class="w-10 h-10 border border-[var(--line)] flex items-center justify-center">
+          <i data-lucide="clock" class="w-5 h-5"></i>
+        </div>
+        <div>
+          <p class="text-[10px] muted uppercase font-bold">Availability</p>
+          <p class="text-sm text-white">Open for Work</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="py-12 border-t border-[var(--line)]">
+  <div class="max-w-4xl mx-auto text-center muted text-xs uppercase tracking-widest">
+    <p>&copy; 2025 Ishimwe Rocky. All Rights Reserved.</p>
+    <div class="mt-4 flex items-center justify-center gap-6">
+      <a href="https://github.com/rockyishimwe" target="_blank" rel="noopener" class="muted hover:text-white">GitHub</a>
+      <a href="https://www.instagram.com/roc.k_yy/" target="_blank" rel="noopener" class="muted hover:text-white">Instagram</a>
+      <a href="https://www.linkedin.com/in/ishimwe-rocky-1210833b8/" target="_blank" rel="noopener" class="muted hover:text-white">LinkedIn</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Initialize lucide icons
+  lucide.createIcons();
+
+  // Mobile menu toggles
+  const menuBtn = document.getElementById('menu-btn');
+  const closeBtn = document.getElementById('close-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+  if (menuBtn) menuBtn.addEventListener('click', () => mobileMenu.classList.remove('translate-x-full'));
+  if (closeBtn) closeBtn.addEventListener('click', () => mobileMenu.classList.add('translate-x-full'));
+  document.querySelectorAll('.mobile-link').forEach(link => { link.addEventListener('click', () => mobileMenu.classList.add('translate-x-full')); });
+
+  // Theme toggle logic (dark/light) with persistence and system preference fallback
+  const themeToggleBtn = document.getElementById('theme-toggle');
+  const themeIcon = document.getElementById('theme-icon');
+  const themeLabel = document.getElementById('theme-label');
+  const bodyEl = document.body;
+
+  function setTheme(theme) {
+    bodyEl.setAttribute('data-theme', theme);
+    localStorage.setItem('theme', theme);
+    // update UI
+    if (theme === 'light') {
+      themeIcon.setAttribute('data-lucide', 'moon');
+      themeLabel.textContent = 'Light';
+    } else {
+      themeIcon.setAttribute('data-lucide', 'sun');
+      themeLabel.textContent = 'Dark';
+    }
+    // re-render lucide icons to reflect attribute change
+    lucide.createIcons();
+  }
+
+  // Determine initial theme: localStorage -> prefers-color-scheme -> default dark
+  (function initTheme() {
+    const saved = localStorage.getItem('theme');
+    if (saved === 'light' || saved === 'dark') {
+      setTheme(saved);
+      return;
+    }
+    const prefersLight = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches;
+    setTheme(prefersLight ? 'light' : 'dark');
+  })();
+
+  // Toggle handler
+  if (themeToggleBtn) {
+    themeToggleBtn.addEventListener('click', () => {
+      const current = bodyEl.getAttribute('data-theme') === 'light' ? 'light' : 'dark';
+      const next = current === 'light' ? 'dark' : 'light';
+      setTheme(next);
+    });
+  }
+
+  // Accessibility: focus outlines for keyboard users
+  document.body.addEventListener('keydown', (e) => {
+    if (e.key === 'Tab') document.body.classList.add('show-focus');
+  });
+
+  // Reveal animation on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
