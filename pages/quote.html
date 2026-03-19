@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Get a quote from IT Services Co. Tell us about your project and receive a detailed proposal within 2 business days."/>
+  <title>Get a Quote — IT Services Co.</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"/>
+  <link rel="stylesheet" href="../css/style.css"/>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar" id="navbar">
+  <div class="navbar-inner">
+    <a href="../index.html" class="nav-brand">
+      <div class="nav-logo"><svg width="18" height="18" viewBox="0 0 20 20" fill="none"><rect x="1" y="5" width="6" height="10" rx="1.5" fill="white" opacity="0.95"/><rect x="11" y="5" width="4" height="3" rx="1" fill="white" opacity="0.8"/><rect x="11" y="12" width="4" height="3" rx="1" fill="white" opacity="0.8"/></svg></div>
+      IT<span class="brand-accent">Services</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="../index.html" class="nav-link">Home</a></li>
+      <li><a href="services.html" class="nav-link">Services</a></li>
+      <li><a href="about.html" class="nav-link">About</a></li>
+      <li><a href="contact.html" class="nav-link">Contact</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme"><i class="bi bi-sun"></i></button>
+    </div>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="nav-mobile" id="navMobile">
+  <a href="../index.html" class="nav-link">Home</a>
+  <a href="services.html" class="nav-link">Services</a>
+  <a href="about.html" class="nav-link">About</a>
+  <a href="contact.html" class="nav-link">Contact</a>
+</div>
+
+<!-- PAGE HERO -->
+<section class="page-hero" style="padding-bottom:2rem">
+  <div class="page-hero-bg" aria-hidden="true"></div>
+  <div class="container" style="position:relative;z-index:1">
+    <div class="reveal">
+      <span class="label">REQUEST A QUOTE</span>
+      <h1 class="page-hero-title">Tell Us About<br/><span class="gradient-text">Your Project</span></h1>
+      <p class="page-hero-desc">3 simple steps. We'll respond with a detailed proposal within 2 business days. No obligation, no pressure.</p>
+    </div>
+  </div>
+</section>
+
+<!-- QUOTE FORM -->
+<section class="section" style="padding-top:2rem">
+  <div class="container">
+
+    <!-- SUCCESS STATE -->
+    <div id="quoteSuccess" style="display:none;max-width:600px;margin:0 auto;text-align:center;padding:4rem 2rem">
+      <div class="success-checkmark" style="width:80px;height:80px;margin:0 auto 1.5rem">
+        <svg viewBox="0 0 80 80" fill="none">
+          <circle cx="40" cy="40" r="38" stroke="#0ff0a0" stroke-width="3" class="checkmark-circle"/>
+          <path d="M24 40l11 11 21-22" stroke="#0ff0a0" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" class="checkmark-check"/>
+        </svg>
+      </div>
+      <h2 style="margin-bottom:.75rem">Quote Request Submitted!</h2>
+      <p style="color:var(--fg2);margin-bottom:2rem">We've received your request and will follow up within <strong style="color:var(--electric)">2 business days</strong> with a detailed proposal tailored to your project.</p>
+      <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
+        <a href="../index.html" class="btn btn-primary">← Back to Home</a>
+        <a href="services.html" class="btn btn-ghost">Browse Services</a>
+      </div>
+    </div>
+
+    <div id="quoteFormPanel" class="quote-layout">
+
+      <!-- FORM -->
+      <div class="form-panel reveal" style="position:relative">
+        <!-- Progress -->
+        <div class="quote-progress">
+          <div class="q-step active">
+            <div class="q-step-dot">1</div>
+            <span>Your Info</span>
+          </div>
+          <div class="q-step-line"></div>
+          <div class="q-step">
+            <div class="q-step-dot">2</div>
+            <span>Project</span>
+          </div>
+          <div class="q-step-line"></div>
+          <div class="q-step">
+            <div class="q-step-dot">3</div>
+            <span>Budget</span>
+          </div>
+        </div>
+
+        <form id="quoteForm" novalidate>
+
+          <!-- STEP 1: Your Info -->
+          <div class="q-form-step">
+            <h2 class="form-title">Your Details</h2>
+            <p class="form-subtitle">Let us know who we're talking to.</p>
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="qFirstName">First name <span class="req">*</span></label>
+                <input id="qFirstName" class="form-input" type="text" placeholder="Alex" required autocomplete="given-name"/>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="qLastName">Last name <span class="req">*</span></label>
+                <input id="qLastName" class="form-input" type="text" placeholder="Johnson" required autocomplete="family-name"/>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="qEmail">Work email <span class="req">*</span></label>
+                <input id="qEmail" class="form-input" type="email" placeholder="you@company.com" required/>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="qPhone">Phone</label>
+                <input id="qPhone" class="form-input" type="tel" placeholder="+1 (555) 000-0000"/>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="qCompany">Company name</label>
+              <input id="qCompany" class="form-input" type="text" placeholder="Your Company Inc."/>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="qRole">Your role</label>
+              <select id="qRole" class="form-select">
+                <option value="">Select your role…</option>
+                <option>CEO / Founder</option>
+                <option>CTO / VP Engineering</option>
+                <option>Product Manager</option>
+                <option>Project Manager</option>
+                <option>Developer / Engineer</option>
+                <option>Marketing / Growth</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div style="display:flex;justify-content:flex-end">
+              <button type="button" class="btn btn-primary btn-lg" data-next>
+                Next: Project Details <i class="bi bi-arrow-right"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- STEP 2: Project Details -->
+          <div class="q-form-step" style="display:none">
+            <h2 class="form-title">Project Details</h2>
+            <p class="form-subtitle">Tell us what you're building and what you need help with.</p>
+            <div class="form-group">
+              <label class="form-label">Services needed <span class="req">*</span></label>
+              <div class="services-checkbox-grid">
+                <label class="service-checkbox"><input type="checkbox" value="web"/> <i class="bi bi-code-slash" style="color:var(--electric)"></i> Web Development</label>
+                <label class="service-checkbox"><input type="checkbox" value="cloud"/> <i class="bi bi-cloud" style="color:var(--pulse)"></i> Cloud &amp; DevOps</label>
+                <label class="service-checkbox"><input type="checkbox" value="security"/> <i class="bi bi-shield-lock" style="color:var(--emerald)"></i> Cybersecurity</label>
+                <label class="service-checkbox"><input type="checkbox" value="ai"/> <i class="bi bi-robot" style="color:var(--amber)"></i> AI &amp; ML</label>
+                <label class="service-checkbox"><input type="checkbox" value="mobile"/> <i class="bi bi-phone" style="color:var(--electric)"></i> Mobile Apps</label>
+                <label class="service-checkbox"><input type="checkbox" value="support"/> <i class="bi bi-headset" style="color:var(--rose)"></i> IT Support</label>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="qDesc">Project description <span class="req">*</span></label>
+              <textarea id="qDesc" class="form-textarea" rows="4" placeholder="Describe your project — what are you building, what problem does it solve, and where are you in the process?" required></textarea>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="qTimeline">Desired timeline</label>
+              <select id="qTimeline" class="form-select">
+                <option value="">Select timeline…</option>
+                <option>ASAP (within 2 weeks)</option>
+                <option>1–2 months</option>
+                <option>3–6 months</option>
+                <option>6–12 months</option>
+                <option>12+ months / Ongoing</option>
+              </select>
+            </div>
+            <div style="display:flex;justify-content:space-between">
+              <button type="button" class="btn btn-ghost btn-lg" data-prev>
+                <i class="bi bi-arrow-left"></i> Back
+              </button>
+              <button type="button" class="btn btn-primary btn-lg" data-next>
+                Next: Budget <i class="bi bi-arrow-right"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- STEP 3: Budget -->
+          <div class="q-form-step" style="display:none">
+            <h2 class="form-title">Budget &amp; Extras</h2>
+            <p class="form-subtitle">Help us tailor a proposal that fits your investment range.</p>
+            <div class="form-group">
+              <label class="form-label" for="qBudget">Estimated budget</label>
+              <select id="qBudget" class="form-select">
+                <option value="">Select budget range…</option>
+                <option>Under $10,000</option>
+                <option>$10,000 – $25,000</option>
+                <option>$25,000 – $50,000</option>
+                <option>$50,000 – $100,000</option>
+                <option>$100,000 – $250,000</option>
+                <option>$250,000+</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="qHear">How did you hear about us?</label>
+              <select id="qHear" class="form-select">
+                <option value="">Select…</option>
+                <option>Google Search</option>
+                <option>LinkedIn</option>
+                <option>Referral / Word of mouth</option>
+                <option>GitHub</option>
+                <option>Conference / Event</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="qExtra">Anything else we should know?</label>
+              <textarea id="qExtra" class="form-textarea" rows="3" placeholder="Any specific technical requirements, compliance needs, or context that would help us understand your project better…"></textarea>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem">
+              <button type="button" class="btn btn-ghost btn-lg" data-prev>
+                <i class="bi bi-arrow-left"></i> Back
+              </button>
+              <button type="submit" class="btn btn-primary btn-lg">
+                Submit Request <i class="bi bi-send"></i>
+              </button>
+            </div>
+            <p style="font-size:0.78rem;color:var(--fg3);margin-top:1rem;text-align:center"><i class="bi bi-lock-fill"></i> Your information is confidential. We never share your data with third parties.</p>
+          </div>
+
+        </form>
+      </div>
+
+      <!-- SIDEBAR -->
+      <div class="quote-sidebar reveal reveal-delay-2">
+
+        <div class="sidebar-card">
+          <h4><i class="bi bi-clock"></i> What Happens Next</h4>
+          <div style="display:flex;flex-direction:column;gap:1rem">
+            <div style="display:flex;gap:0.85em;align-items:flex-start">
+              <div style="width:28px;height:28px;border-radius:50%;background:var(--electric-g);border:1px solid rgba(0,232,255,0.25);display:flex;align-items:center;justify-content:center;font-size:0.75rem;font-weight:700;color:var(--electric);flex-shrink:0">1</div>
+              <div><strong style="font-size:0.85rem;display:block;margin-bottom:2px">Review</strong><span style="font-size:0.78rem;color:var(--fg2)">Our team reviews your request within 4 hours</span></div>
+            </div>
+            <div style="display:flex;gap:0.85em;align-items:flex-start">
+              <div style="width:28px;height:28px;border-radius:50%;background:var(--pulse-g);border:1px solid rgba(176,108,255,0.25);display:flex;align-items:center;justify-content:center;font-size:0.75rem;font-weight:700;color:var(--pulse);flex-shrink:0">2</div>
+              <div><strong style="font-size:0.85rem;display:block;margin-bottom:2px">Discovery Call</strong><span style="font-size:0.78rem;color:var(--fg2)">We schedule a 30-min call to clarify requirements</span></div>
+            </div>
+            <div style="display:flex;gap:0.85em;align-items:flex-start">
+              <div style="width:28px;height:28px;border-radius:50%;background:var(--emerald-g);border:1px solid rgba(15,240,160,0.25);display:flex;align-items:center;justify-content:center;font-size:0.75rem;font-weight:700;color:var(--emerald);flex-shrink:0">3</div>
+              <div><strong style="font-size:0.85rem;display:block;margin-bottom:2px">Proposal</strong><span style="font-size:0.78rem;color:var(--fg2)">Detailed proposal delivered within 2 business days</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="sidebar-card">
+          <h4><i class="bi bi-shield-check"></i> Why Choose Us</h4>
+          <div style="display:flex;flex-direction:column;gap:0.6rem">
+            <div style="display:flex;align-items:center;gap:0.6em;font-size:0.82rem;color:var(--fg2)"><i class="bi bi-check-circle-fill" style="color:var(--emerald)"></i>50+ senior engineers globally</div>
+            <div style="display:flex;align-items:center;gap:0.6em;font-size:0.82rem;color:var(--fg2)"><i class="bi bi-check-circle-fill" style="color:var(--emerald)"></i>AWS, GCP, Azure certified</div>
+            <div style="display:flex;align-items:center;gap:0.6em;font-size:0.82rem;color:var(--fg2)"><i class="bi bi-check-circle-fill" style="color:var(--emerald)"></i>ISO 27001 &amp; SOC 2 compliant</div>
+            <div style="display:flex;align-items:center;gap:0.6em;font-size:0.82rem;color:var(--fg2)"><i class="bi bi-check-circle-fill" style="color:var(--emerald)"></i>500+ projects delivered</div>
+            <div style="display:flex;align-items:center;gap:0.6em;font-size:0.82rem;color:var(--fg2)"><i class="bi bi-check-circle-fill" style="color:var(--emerald)"></i>99.99% uptime SLA</div>
+            <div style="display:flex;align-items:center;gap:0.6em;font-size:0.82rem;color:var(--fg2)"><i class="bi bi-check-circle-fill" style="color:var(--emerald)"></i>4.9/5 average client rating</div>
+          </div>
+        </div>
+
+        <div class="sidebar-card" style="background:linear-gradient(135deg,rgba(0,232,255,0.06),rgba(176,108,255,0.06));border-color:rgba(0,232,255,0.2)">
+          <h4><i class="bi bi-headset"></i> Prefer to Talk?</h4>
+          <p style="font-size:0.82rem;color:var(--fg2);margin-bottom:1rem">Skip the form and call us directly. Our team is available Mon–Fri, 9AM–6PM PST.</p>
+          <a href="tel:+14155550100" class="btn btn-outline-electric btn-sm" style="width:100%;justify-content:center"><i class="bi bi-telephone"></i> +1 (415) 555-0100</a>
+        </div>
+
+        <!-- Testimonial snippet -->
+        <div class="sidebar-card">
+          <div class="t-stars" style="font-size:0.8rem;margin-bottom:0.75rem">★★★★★</div>
+          <blockquote style="font-size:0.82rem;color:var(--fg2);font-style:italic;margin-bottom:1rem;line-height:1.7">"We had a proposal within 24 hours and kicked off development the following week. Best decision we made."</blockquote>
+          <div style="display:flex;align-items:center;gap:0.65em">
+            <div style="width:32px;height:32px;border-radius:50%;overflow:hidden;flex-shrink:0"><img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=64&h=64&fit=crop&q=80" alt="" style="width:100%;height:100%;object-fit:cover"/></div>
+            <div><strong style="font-size:0.8rem;display:block">Michael Rodriguez</strong><span style="font-size:0.72rem;color:var(--fg3)">Head of Engineering, FinStack</span></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-main" style="padding-top:3rem">
+      <div>
+        <div class="footer-brand-wrap"><div class="nav-logo"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="1" y="5" width="6" height="10" rx="1" fill="white" opacity="0.9"/><rect x="11" y="5" width="4" height="3" rx="1" fill="white" opacity="0.7"/><rect x="11" y="12" width="4" height="3" rx="1" fill="white" opacity="0.7"/></svg></div><span class="footer-brand-name">IT<span class="brand-accent">Services</span></span></div>
+        <p class="footer-tagline">Engineering the technology foundation for tomorrow's leading companies.</p>
+      </div>
+      <div class="footer-col"><h5>Services</h5><ul class="footer-links"><li><a href="services.html">Web Development</a></li><li><a href="services.html">Cloud &amp; DevOps</a></li><li><a href="services.html">Cybersecurity</a></li><li><a href="services.html">AI &amp; Automation</a></li></ul></div>
+      <div class="footer-col"><h5>Company</h5><ul class="footer-links"><li><a href="about.html">About Us</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+      <div class="footer-col"><h5>Contact</h5><ul class="footer-contact-list"><li class="footer-contact-item"><i class="bi bi-envelope"></i><a href="mailto:hello@itservices.com">hello@itservices.com</a></li><li class="footer-contact-item"><i class="bi bi-telephone"></i><a href="tel:+14155550100">+1 (415) 555-0100</a></li></ul></div>
+    </div>
+  </div>
+  <div class="container"><div class="footer-bottom"><p class="footer-copy">© <span class="footer-year">2024</span> IT Services Co.</p><nav class="footer-legal"><a href="#">Privacy Policy</a><a href="#">Terms</a></nav></div></div>
+</footer>
+
+<script src="../js/main.js"></script>
+</body>
+</html>
