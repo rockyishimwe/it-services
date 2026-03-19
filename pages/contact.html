@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Contact IT Services Co. — Get in touch for enterprise IT, cloud, cybersecurity, and development projects."/>
+  <title>Contact — IT Services Co.</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"/>
+  <link rel="stylesheet" href="../css/style.css"/>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar" id="navbar">
+  <div class="navbar-inner">
+    <a href="../index.html" class="nav-brand">
+      <div class="nav-logo"><svg width="18" height="18" viewBox="0 0 20 20" fill="none"><rect x="1" y="5" width="6" height="10" rx="1.5" fill="white" opacity="0.95"/><rect x="11" y="5" width="4" height="3" rx="1" fill="white" opacity="0.8"/><rect x="11" y="12" width="4" height="3" rx="1" fill="white" opacity="0.8"/></svg></div>
+      IT<span class="brand-accent">Services</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="../index.html" class="nav-link">Home</a></li>
+      <li><a href="services.html" class="nav-link">Services</a></li>
+      <li><a href="about.html" class="nav-link">About</a></li>
+      <li><a href="contact.html" class="nav-link active">Contact</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme"><i class="bi bi-sun"></i></button>
+      <a href="quote.html" class="btn btn-primary btn-sm">Get a Quote <span class="arrow"><i class="bi bi-arrow-right"></i></span></a>
+    </div>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="nav-mobile" id="navMobile">
+  <a href="../index.html" class="nav-link">Home</a>
+  <a href="services.html" class="nav-link">Services</a>
+  <a href="about.html" class="nav-link">About</a>
+  <a href="contact.html" class="nav-link active">Contact</a>
+  <a href="quote.html" class="btn btn-primary" style="margin-top:1rem">Get a Quote</a>
+</div>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="page-hero-bg" aria-hidden="true"></div>
+  <div class="container" style="position:relative;z-index:1">
+    <div class="reveal">
+      <span class="label">GET IN TOUCH</span>
+      <h1 class="page-hero-title">Let's Start a<br/><span class="gradient-text">Conversation</span></h1>
+      <p class="page-hero-desc">Have a project in mind? A technical challenge? Or just want to explore what's possible? We'd love to hear from you — guaranteed response within 4 business hours.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT MAIN -->
+<section class="section" aria-label="Contact">
+  <div class="container">
+    <div class="contact-grid">
+
+      <!-- FORM PANEL -->
+      <div class="reveal">
+        <div class="form-panel">
+
+          <!-- SUCCESS STATE -->
+          <div class="form-success-v2" id="contactSuccess" style="display:none">
+            <div class="success-checkmark">
+              <svg viewBox="0 0 80 80" fill="none">
+                <circle cx="40" cy="40" r="38" stroke="#0ff0a0" stroke-width="3" class="checkmark-circle"/>
+                <path d="M24 40l11 11 21-22" stroke="#0ff0a0" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" class="checkmark-check"/>
+              </svg>
+            </div>
+            <h3 style="font-size:1.5rem;margin-bottom:.5rem">Message Received!</h3>
+            <p style="color:var(--fg2);margin-bottom:1.5rem">Thank you for reaching out. A member of our team will be in touch within <strong style="color:var(--electric)">4 business hours</strong>.</p>
+            <a href="../index.html" class="btn btn-primary">Back to Home</a>
+          </div>
+
+          <!-- FORM -->
+          <form id="contactForm" novalidate>
+            <h2 class="form-title">Send us a message</h2>
+            <p class="form-subtitle">Fill out the form and we'll get back to you shortly. Fields marked <span style="color:var(--rose)">*</span> are required.</p>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="firstName">First name <span class="req">*</span></label>
+                <input id="firstName" class="form-input" type="text" placeholder="Alex" required autocomplete="given-name"/>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="lastName">Last name <span class="req">*</span></label>
+                <input id="lastName" class="form-input" type="text" placeholder="Johnson" required autocomplete="family-name"/>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="email">Work email <span class="req">*</span></label>
+                <input id="email" class="form-input" type="email" placeholder="you@company.com" required autocomplete="email"/>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="phone">Phone</label>
+                <input id="phone" class="form-input" type="tel" placeholder="+1 (555) 000-0000" autocomplete="tel"/>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="company">Company</label>
+              <input id="company" class="form-input" type="text" placeholder="Your Company Inc." autocomplete="organization"/>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="subject">Subject <span class="req">*</span></label>
+              <select id="subject" class="form-select" required>
+                <option value="">Select a topic…</option>
+                <option value="web">Web Development Project</option>
+                <option value="cloud">Cloud &amp; DevOps</option>
+                <option value="security">Cybersecurity Audit</option>
+                <option value="ai">AI &amp; Machine Learning</option>
+                <option value="mobile">Mobile App Development</option>
+                <option value="support">Managed IT Support</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="message">Message <span class="req">*</span></label>
+              <textarea id="message" class="form-textarea" placeholder="Tell us about your project, timeline, and any specific requirements…" required rows="5"></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-lg" style="width:100%;justify-content:center">
+              Send Message <i class="bi bi-send"></i>
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <!-- INFO PANEL -->
+      <div class="contact-info-panel reveal reveal-delay-2">
+
+        <div class="contact-info-card">
+          <h3><i class="bi bi-geo-alt" style="color:var(--electric)"></i> Our Office</h3>
+          <div class="info-item">
+            <div class="info-icon"><i class="bi bi-building"></i></div>
+            <div class="info-text">
+              <strong>Headquarters</strong>
+              <span>123 Tech Blvd, Suite 400<br/>San Francisco, CA 94105</span>
+            </div>
+          </div>
+          <div class="map-wrap">
+            <div class="map-bg"></div>
+            <div class="map-placeholder">
+              <i class="bi bi-pin-map"></i>
+              <span>San Francisco, CA</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-info-card">
+          <h3><i class="bi bi-telephone" style="color:var(--electric)"></i> Contact Details</h3>
+          <div class="info-item">
+            <div class="info-icon"><i class="bi bi-telephone"></i></div>
+            <div class="info-text"><strong>Phone</strong><a href="tel:+14155550100">+1 (415) 555-0100</a></div>
+          </div>
+          <div class="info-item">
+            <div class="info-icon"><i class="bi bi-envelope"></i></div>
+            <div class="info-text"><strong>Email</strong><a href="mailto:hello@itservices.com">hello@itservices.com</a></div>
+          </div>
+          <div class="info-item">
+            <div class="info-icon"><i class="bi bi-clock"></i></div>
+            <div class="info-text"><strong>Hours</strong><span>Mon–Fri, 9AM–6PM PST</span></div>
+          </div>
+          <div class="info-item">
+            <div class="info-icon" style="background:rgba(15,240,160,0.1);border-color:rgba(15,240,160,0.2);color:var(--emerald)"><i class="bi bi-chat-dots"></i></div>
+            <div class="info-text"><strong style="color:var(--emerald)">Response Time</strong><span>Within 4 business hours</span></div>
+          </div>
+        </div>
+
+        <div class="contact-info-card">
+          <h3><i class="bi bi-share" style="color:var(--electric)"></i> Follow Us</h3>
+          <div style="display:flex;gap:0.5rem;flex-wrap:wrap">
+            <a href="#" class="btn btn-ghost btn-sm"><i class="bi bi-linkedin"></i> LinkedIn</a>
+            <a href="#" class="btn btn-ghost btn-sm"><i class="bi bi-github"></i> GitHub</a>
+            <a href="#" class="btn btn-ghost btn-sm"><i class="bi bi-twitter-x"></i> Twitter</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section" style="padding-top:0" aria-label="FAQ">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="label">FAQ</span>
+      <h2 class="heading-1">Frequently Asked Questions</h2>
+    </div>
+    <div class="faq-list" style="max-width:800px;margin:0 auto">
+
+      <div class="faq-item reveal">
+        <button class="faq-trigger">How quickly can you start on a new project? <i class="bi bi-chevron-down"></i></button>
+        <div class="faq-body"><div class="faq-body-inner">For most projects we can begin the discovery phase within 1–2 weeks. For urgent engagements, we have a fast-track process that can get a team mobilised within 72 hours of contract signature.</div></div>
+      </div>
+
+      <div class="faq-item reveal reveal-delay-1">
+        <button class="faq-trigger">What is your pricing model? <i class="bi bi-chevron-down"></i></button>
+        <div class="faq-body"><div class="faq-body-inner">We offer three engagement models: fixed-price project delivery, time-and-materials with weekly budgets, and dedicated team retainers. We'll recommend the best model based on your project scope and level of certainty.</div></div>
+      </div>
+
+      <div class="faq-item reveal reveal-delay-2">
+        <button class="faq-trigger">Do you sign NDAs? <i class="bi bi-chevron-down"></i></button>
+        <div class="faq-body"><div class="faq-body-inner">Absolutely. We're happy to sign NDAs before any detailed discussions. We handle sensitive data for clients across finance, healthcare, and defence, so confidentiality is built into how we operate — not an afterthought.</div></div>
+      </div>
+
+      <div class="faq-item reveal">
+        <button class="faq-trigger">What happens after the project is delivered? <i class="bi bi-chevron-down"></i></button>
+        <div class="faq-body"><div class="faq-body-inner">We provide comprehensive documentation, knowledge transfer sessions, and a 90-day post-launch support window as standard. Most clients then move to a managed support retainer, but we're happy to hand off to your internal team if that's preferred.</div></div>
+      </div>
+
+      <div class="faq-item reveal reveal-delay-1">
+        <button class="faq-trigger">Can you work with our existing development team? <i class="bi bi-chevron-down"></i></button>
+        <div class="faq-body"><div class="faq-body-inner">Yes — in fact, it's one of our most common engagement types. We slot into your existing workflows, adopt your tooling and standards, and function as an embedded extension of your team rather than an external agency.</div></div>
+      </div>
+
+      <div class="faq-item reveal reveal-delay-2">
+        <button class="faq-trigger">What industries do you specialise in? <i class="bi bi-chevron-down"></i></button>
+        <div class="faq-body"><div class="faq-body-inner">We work across fintech, healthcare, SaaS, e-commerce, logistics, and enterprise software. We have particular depth in regulated industries where security and compliance are non-negotiable.</div></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-newsletter">
+      <div class="footer-nl-inner">
+        <div><h3 class="nl-title">Stay ahead of the curve.</h3><p class="nl-desc">Tech insights and case studies, twice a month.</p></div>
+        <form class="nl-form" onsubmit="handleNewsletter(event)"><input type="email" class="nl-input" placeholder="your@company.com" required/><button type="submit" class="btn btn-primary btn-sm">Subscribe</button></form>
+      </div>
+    </div>
+    <div class="footer-main">
+      <div>
+        <div class="footer-brand-wrap"><div class="nav-logo"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="1" y="5" width="6" height="10" rx="1" fill="white" opacity="0.9"/><rect x="11" y="5" width="4" height="3" rx="1" fill="white" opacity="0.7"/><rect x="11" y="12" width="4" height="3" rx="1" fill="white" opacity="0.7"/></svg></div><span class="footer-brand-name">IT<span class="brand-accent">Services</span></span></div>
+        <p class="footer-tagline">Engineering the technology foundation for tomorrow's leading companies.</p>
+        <div class="footer-social"><a href="#" class="social-icon"><i class="bi bi-linkedin"></i></a><a href="#" class="social-icon"><i class="bi bi-github"></i></a><a href="#" class="social-icon"><i class="bi bi-twitter-x"></i></a></div>
+      </div>
+      <div class="footer-col"><h5>Services</h5><ul class="footer-links"><li><a href="services.html">Web Development</a></li><li><a href="services.html">Cloud &amp; DevOps</a></li><li><a href="services.html">Cybersecurity</a></li><li><a href="services.html">AI &amp; Automation</a></li></ul></div>
+      <div class="footer-col"><h5>Company</h5><ul class="footer-links"><li><a href="about.html">About Us</a></li><li><a href="contact.html">Contact</a></li><li><a href="quote.html">Get a Quote</a></li></ul></div>
+      <div class="footer-col"><h5>Contact</h5><ul class="footer-contact-list"><li class="footer-contact-item"><i class="bi bi-envelope"></i><a href="mailto:hello@itservices.com">hello@itservices.com</a></li><li class="footer-contact-item"><i class="bi bi-telephone"></i><a href="tel:+14155550100">+1 (415) 555-0100</a></li></ul></div>
+    </div>
+  </div>
+  <div class="container"><div class="footer-bottom"><p class="footer-copy">© <span class="footer-year">2024</span> IT Services Co.</p><nav class="footer-legal"><a href="#">Privacy Policy</a><a href="#">Terms</a></nav></div></div>
+</footer>
+
+<script src="../js/main.js"></script>
+</body>
+</html>
