@@ -3,11 +3,99 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="About IT Services Co. — Meet our team of 50+ senior engineers delivering enterprise cloud, cybersecurity, AI, and web development solutions worldwide."/>
   <title>About — IT Services Co.</title>
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX');
+  </script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"/>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="../css/style.css"/>
+  <!-- Structured Data for Team -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "IT Services Co.",
+    "description": "Technology partner delivering engineering excellence with 50+ senior engineers across 18 countries.",
+    "url": "https://itservices.com",
+    "foundingDate": "2012",
+    "numberOfEmployees": "50+",
+    "address": {
+      "@type": "PostalAddress",
+      "addressCountry": "RW"
+    },
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "+250791039241",
+      "email": "rockyishimwe9@gmail.com",
+      "contactType": "customer service"
+    },
+    "employee": [
+      {
+        "@type": "Person",
+        "name": "Awk-3",
+        "jobTitle": "CEO & Founder",
+        "description": "The visionary behind IT Services Co. A decade of building systems that scale.",
+        "sameAs": [
+          "https://www.linkedin.com/in/ishimwe-rocky-1210833b8/",
+          "https://github.com/rockyishimwe"
+        ],
+        "email": "rockyishimwe9@gmail.com",
+        "telephone": "+250791039241"
+      },
+      {
+        "@type": "Person",
+        "name": "Albert",
+        "jobTitle": "Head of Cloud & DevOps",
+        "description": "AWS-certified cloud architect with zero-downtime migrations for 40+ enterprise clients."
+      },
+      {
+        "@type": "Person",
+        "name": "Robert",
+        "jobTitle": "Head of Cybersecurity",
+        "description": "CISSP & OSCP certified. Conducted 300+ penetration tests across finance, healthcare, and defence."
+      },
+      {
+        "@type": "Person",
+        "name": "Forever Hyacinthe",
+        "jobTitle": "Head of AI & Data",
+        "description": "ML researcher turned product engineer. Built NLP pipelines for 30+ enterprise clients."
+      }
+    ],
+    "knowsAbout": [
+      "Web Development",
+      "Cloud Architecture",
+      "Cybersecurity",
+      "AI & Machine Learning",
+      "DevOps",
+      "Mobile Development"
+    ],
+    "hasCredential": [
+      {
+        "@type": "EducationalOccupationalCredential",
+        "name": "AWS Select Consulting Partner",
+        "credentialCategory": "Professional Certification"
+      },
+      {
+        "@type": "EducationalOccupationalCredential",
+        "name": "ISO 27001 Certified",
+        "credentialCategory": "Security Certification"
+      },
+      {
+        "@type": "EducationalOccupationalCredential",
+        "name": "SOC 2 Type II Compliant",
+        "credentialCategory": "Security Certification"
+      }
+    ]
+  }
+  </script>
   <style>
     /* ── Font size improvements across page ── */
     .nav-link          { font-size: 0.84rem !important; }
@@ -66,7 +154,11 @@
       flex-direction: column;
       transition: background 0.2s linear;
     }
-    .team-card:hover { background: #0c0c0c; }
+    .team-card:hover { 
+      background: #0c0c0c; 
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+    }
 
     /* Photo box */
     .team-card-img {
@@ -289,12 +381,12 @@
     <div class="section-header reveal"><span class="label">WHAT DRIVES US</span><h2 class="heading-1" style="margin-bottom:0">Mission &amp; Vision</h2></div>
     <div class="mv-grid">
       <div class="mv-card reveal">
-        <div class="big-icon">🎯</div>
+        <div class="big-icon"><i class="bi bi-bullseye"></i></div>
         <h3>Our Mission</h3>
         <p>To be the most trusted technology partner for ambitious companies — delivering engineering excellence that drives real business outcomes. We measure our success by your success.</p>
       </div>
       <div class="mv-card reveal reveal-delay-1">
-        <div class="big-icon">🔭</div>
+        <div class="big-icon"><i class="bi bi-eye"></i></div>
         <h3>Our Vision</h3>
         <p>A world where every great company has access to world-class technology expertise — regardless of size or location. We're building that bridge, one project at a time.</p>
       </div>
@@ -333,7 +425,7 @@
       <!-- AWK-3 — Founder (Rocky) -->
       <div class="team-card reveal">
         <div class="team-card-img">
-          <span class="founder-badge">★ Founder</span>
+          <span class="founder-badge">Founder</span>
           <img src="../images/slack.jpg" alt="Awk-3 — Founder & CEO"/>
           <div class="team-overlay">
             <div class="team-socials">

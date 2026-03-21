@@ -5,8 +5,110 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <meta name="description" content="IT Services Co. — Full stack of enterprise IT services: web dev, cloud, security, AI, mobile, and managed support."/>
   <title>Services — IT Services Co.</title>
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX');
+  </script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"/>
   <link rel="stylesheet" href="../css/style.css"/>
+  <!-- Structured Data for Services -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "IT Services Co.",
+    "description": "Full-stack IT services including web development, cloud architecture, cybersecurity, AI solutions, mobile development, and managed support.",
+    "url": "https://itservices.com/pages/services.html",
+    "telephone": "+250791039241",
+    "email": "rockyishimwe9@gmail.com",
+    "address": {
+      "@type": "PostalAddress",
+      "addressCountry": "RW"
+    },
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "IT Services",
+      "itemListElement": [
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Custom Web Development",
+            "description": "Modern web applications using React, Next.js, and scalable backends."
+          },
+          "provider": {
+            "@type": "Organization",
+            "name": "IT Services Co."
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Cloud Architecture & DevOps",
+            "description": "AWS, GCP, Azure infrastructure designed for resilience and cost-efficiency."
+          },
+          "provider": {
+            "@type": "Organization",
+            "name": "IT Services Co."
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Cybersecurity Solutions",
+            "description": "Penetration testing, SIEM, and 24/7 SOC monitoring."
+          },
+          "provider": {
+            "@type": "Organization",
+            "name": "IT Services Co."
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "AI & Machine Learning",
+            "description": "LLM integrations, NLP pipelines, and predictive analytics."
+          },
+          "provider": {
+            "@type": "Organization",
+            "name": "IT Services Co."
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Mobile App Development",
+            "description": "React Native and Flutter apps with native UX."
+          },
+          "provider": {
+            "@type": "Organization",
+            "name": "IT Services Co."
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Managed IT Support",
+            "description": "24/7 proactive monitoring and helpdesk support."
+          },
+          "provider": {
+            "@type": "Organization",
+            "name": "IT Services Co."
+          }
+        }
+      ]
+    }
+  }
+  </script>
 </head>
 <body>
 
